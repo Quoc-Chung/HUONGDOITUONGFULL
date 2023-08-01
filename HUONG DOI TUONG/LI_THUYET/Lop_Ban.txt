@@ -1,0 +1,52 @@
+
+- Lớp bạn (friend class) là lớp có thể truy cập các thành phần private hoặc protected của 
+lớp xem nó là bạn.
+- Ví dụ lớp B là  bạn của lớp A --> Lớp B có thể truy cập các thuộc tính private của lớp A
+
+#include<bits/stdc++.h>
+using namespace std;
+class MyClass1
+{
+private:
+    int _privateProp;
+
+public:
+    MyClass1(int n)
+    {
+        this->_privateProp = n;
+    }
+};
+
+class MyClass2
+{
+private:
+    int _privateProp;
+
+public:
+    MyClass2(int n) // constructor
+    {
+        this->_privateProp = n;
+    }
+
+    void myMethod(MyClass1 mClass)
+    {
+        cout << mClass._privateProp; // Không hợp lệ
+    }
+- Sở dĩ  code trên bị  sai do thằng MyClass2 không là  ban hay liên quan gì đến thằng  MyClass1
+mà nó lại cứ muốn truy  cập vào thành phần  private của MyClass1 .
+};
+
+---------------CẤU TRÚC CỦA LỚP BẠN ------------------
+           class <ClassName>
+    {
+          // properties & methods
+       friend class <friendClass>;
+    }
+
+--------------------VÍ DỤ ------------------------
+           class MyClass1
+   {
+        // properties & methods
+      friend class MyClass2;
+   }
+--------------------------------------------------

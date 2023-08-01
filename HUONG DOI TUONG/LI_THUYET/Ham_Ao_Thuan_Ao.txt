@@ -1,0 +1,25 @@
+-   Hàm ảo (virtual function) là một hàm thành viên trong lớp cơ sở (lớp cha) mà
+lớp dẫn xuất(lớp con) khi kế thừa cần phải định nghĩa lại.
+-   Hàm ảo được sử dụng trong lớp cơ sở(Lớp cha ) đảm bảo hàm ảo đó sẽ được định
+nghĩa lại trong lớp dẫn xuất .
+-   Hàm ảo chỉ khác hàm thành phần thông thường khi được gọi từ một con trỏ
+-   Sử dụng hàm ảo khi muốn con trỏ đang trỏ tới đối tượng của lớp nào thì hàm
+thành phần của lớp đó sẽ được gọi mà không xem xét đến kiểu của con trỏ.
+
+
+- Hàm thuần ảo (pure virtual function) được sử dụng khi:
+    + Không cần sử dụng hàm này trong lớp cơ sở, chỉ phục vụ cho lớp dẫn xuất
+    + Lớp dẫn xuất bắt buộc phải định nghĩa lại hàm thuần ảo
+- Vi du :
+   + Chúng ta có một lớp cơ sở là Shape. Các lớp dẫn xuất của lớp Shape là 
+Triangle, Square và Circle. Chúng ta muốn tính diện tích của các hình này.
+   + Chúng ta có thể tạo ra một hàm thuần ảo có tên là calculateArea() trong lớp Shape
+   + Các lớp Triangle, Square và Circle phải định nghĩa lại hàm calculateArea() với công 
+thức tính diện tích khác nhau cho mỗi hình.
+-> Với bài này không thể áp dụng hàm ảo vì mỗi lớp dùng một công thức khác nhau ,việc dùng
+hàm ảo sẽ vô tình kéo theo các lớp con kế thừa lớp cơ sở bị sai do công thức được định nghĩa
+trong hàm ảo bị sai.
+  + Hàm thuần ảo không có thân hàm và bắt buộc phải kết thúc với “= 0”.
+  + Cú pháp “= 0” không phải là gán hàm thuần ảo có giá trị bằng 0.
+  + Nó chỉ là cú pháp cho biết đó là hàm thuần ảo (pure virtual function).
+  

@@ -1,0 +1,89 @@
+-  Tính trừu tượng  ,tính đóng gói, tính kế thừa ,tính đa hình.
+-  Tính kế thừa là các lớp mới(lớp dẫn xuất – derived class) từ các lớp đã có 
+(lớp cơ sở – base class). 
+-  Kế thừa nhằm tái sử dụng lại mã chương trình.
+-  Một lớp có thể là lớp cơ sở cho nhiều lớp mới(lớp dẫn xuất) khác nhau.
+-  Lớp dẫn xuất (con class) kế thừa (inherit) từ lớp cơ sở(base class):
+      + thuộc tính 
+      + phương thức
+-------------CÚ PHÁP ĐỂ KẾ THỪA--------------
+
+  class Lớp_Cơ_Sở {
+       Các thành viên của lớp cơ sở
+   };
+  class Lớp_Kế_Thừa : public Lớp_Cơ_Sở {
+       Các thành viên của lớp dẫn xuất
+   };
+----------------------------------------------
+Truy cập	   Public	Protected	 Private
+Trong cùng lớp	 Có	       Có	       Có
+Lớp kế thừa   	 Có	       Có	      Không
+Bên ngoài lớp	 Có	      Không       Không
+----------------------------------------------
+- KẾ THỪA PUBLIC CÓ ĐẶC ĐIỂM :
+ + Các thành phần public của lớp cơ sở (lớp cha ) trở thành các thành phần public trong 
+lớp dẫn xuất(lớp con)
+ + Các thành phần protected của lớp cơ sở (lớp cha ) trở thành các thành phần protected
+trong lớp dẫn xuất(lớp con)
+
+- KẾ THỪA PROTECTED CÓ ĐẶC ĐIỂM:
+ + Các thành phần public và protected của lớp cơ sở(lớp cha) trở thành các thành phần
+protected trong lớp dẫn xuất(lớp con)
+
+- KẾ THỪA PRIVATE CÓ ĐẶC ĐIỂM :
+
+  + Các thành phần public và protected của lớp cơ sở (lớp cha) trở thành các thành phần private 
+trong lớp dẫn xuất (lớp con).
+
+-->>> các thành phần private của lớp cha luôn không thể truy cập trong lớp con.
+-  Việc gọi hàm  khởi tạo  của lớp con sẽ kéo theo việc gọi hàm khởi tạo lớp cha
+-  Hàm khởi tạo của lớp cha sẽ được gọi  trước 
+
+- Lớp dẫn xuất (Lớp con ) gồm :  + các thành phần khai báo trong lớp 
+                                 + Các thành phần kết thừa từ lớp cha .
+                                 + Truy cập các thành phần bằng toán tử .
+- Lớp dẫn xuất (Lớp con) có thể định nghĩa  lại các thành phần của lớp cha 
+- Trong phạm vi lớp dẫn xuất ,hàm định nghĩa lại trong lớp dẫn xuất sẽ ghi đè (overriding)
+lên hàm được định nghĩa trong lớp cơ sở.
+- Để truy cập đến hàm của lớp cơ sở  thì có thể dùng toán tử : Lớp cha :: 
+- Ví dụ :
+#include <iostream>
+using namespace std;
+class A {
+public:
+    void hamChung() {
+        cout << "Đây là hàm chung trong lớp A." << endl;
+    }
+};
+
+class B : public A {
+public:
+    void hamChung() {
+        cout << "Đây là hàm chung trong lớp B." << endl;
+    }
+
+    void goiHamLopCoSo() {
+        A::hamChung(); // Gọi hàm hamChung() từ lớp cơ sở A bằng cú pháp A::
+    }
+};
+
+int main() {
+    B bobject;
+    bobject.hamChung(); // Gọi hamChung() từ lớp B
+    bobject.goiHamLopCoSo(); // Gọi hamChung() từ lớp A bằng cú pháp A::
+    return 0;
+}
+-  Việc lớp con kế thừa một lúc nhiều lớp cơ sở được gọi là đa kết thừa
+-  Ví dụ : 
+    class Lớp_Cơ_Sở_1{
+        Định nghĩa lớp cơ sở 1
+     };
+    class Lớp_Cơ_Sở_2{
+        Định nghĩa lớp cơ sở 2
+     };
+  class Lớp_Dẫn_Xuất : <Từ_khóa_dẫn_xuất> Lớp_Cơ_Sở_1, <Từ_khóa_dẫn_xuất> Lớp_Cơ_Sở_2{
+        Định nghĩa lớp dẫn xuất
+     };
+- 
+
+

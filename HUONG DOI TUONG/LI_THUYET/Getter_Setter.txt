@@ -1,0 +1,72 @@
+
+getter(LẤY) và setter(ĐẶT) là hai loại phương thức hoặc hàm thành viên được sử dụng để truy
+cập và thiết lập giá trị của các thành viên riêng tư (private members) của một lớp .
+- Đây là một phương pháp tiếp cận an toàn và kiểm soát để tương tác với các thuộc tính
+riêng tư của lớp, giúp ẩn thông tin và đảm bảo tính bảo mật của dữ liệu.
+
+------------------------------------------------
+Getter (Phương thức lấy giá trị)
+Setter (Phương thức thiết lập giá trị)
+------------------------------------------------
+
+------------------------------ Getter -------------------------------
+         + Thường trả về kiểu dữ liệu để tí return và không có tham trị vào hàm.
+           nếu không thì sẽ cin ra thuộc  tính mà tên của hàm có nói 
+         + Trả về một thuộc tính riêng tư (private) của một lớp.
+         + Đọc thông tin từ các thuộc tính riêng tư mà không phải 
+           trực tiếp truy cập vào chúng từ bên ngoài lớp.
+---------------------------------------------------------------------
+Ví dụ:
+class Person {
+private:
+    string name;
+
+public:
+    string getName(){
+        return name;
+    }
+};
+#include <iostream>
+using namespace std;
+int main() {
+    Person person;
+    person.setName("John"); // Gán giá trị mới cho thuộc tính name (nếu có phương thức setter)
+
+    string personName = person.getName(); // Đọc giá trị của thuộc tính name thông qua getter
+    cout << "Name: " << personName << endl;
+
+    return 0;
+}
+
+---------------------------------Setter-----------------------------------
+          + Thường trả về kiểu void, có tham trị truyền vào hàm .
+          + Dùng để thiết lập giá trị mới cho các thuôc tính riêng tư trong lớp.
+          + Cho phép ghi hoặc thay đổi giá trị các thuộc tính riêng tư .
+ -------------------------------------------------------------------------
+
+class Person {
+private:
+    int age;
+    string Name;
+
+public:
+    void setAge(int newAge) {
+        if (newAge >= 0) {
+            age = newAge;
+        }
+    }
+    void setName(string Name){
+       this->Name=Name;
+    }
+};
+
+Ưu điểm của việc sử dụng getter và setter:
+
++  Giúp ẩn thông tin: Các thuộc tính riêng tư của lớp không được truy cập trực tiếp
+từ bên ngoài, người dùng chỉ có thể tương tác thông qua getter và setter.
++  Kiểm soát dữ liệu: Bằng cách sử dụng setter, ta có thể thực hiện các kiểm tra
+ hợp lệ trước khi gán giá trị mới vào thuộc tính.
++  Đảm bảo tính bảo mật: Việc ẩn thông tin giúp bảo vệ dữ liệu quan trọng không bị
+thay đổi hoặc truy cập trái phép.
+
+-->Tránh sử dụng nhiều để tránh làm đánh mất đi tính  bảo mật của hướng đối tượng .

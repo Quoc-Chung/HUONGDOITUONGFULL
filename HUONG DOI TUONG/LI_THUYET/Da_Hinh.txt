@@ -1,0 +1,191 @@
+- Đa hình có hai khái niệm  + Phương thức ảo
+                            + Phương thức thuần ảo 
+- Đa hình thì mọi ngóc ngách đều bắt nguồn từ thằng cha mà ra 
+- Lợi ích của đa hình :Phá vỡ quy tắc của mảng (Các đối tượng cùng kiểu dữ liệu ),tức là có
+thể lưu trữ nhiều đối tượng có  kiểu dữ liệu khác nhau gộp chung vào một mảng .
+- Ví dụ thực tế có ba loại lính công thành :Lính đẩy cửa ,bộ binh , cung thử .Nếu chúng ta sử 
+dụng kế thừa thì phải dùng ba phương thức gọi nhuwg dùng đa hình thì gọi  một  ohast là cả ba
+thằng tự động nó tấn công .
+- Phương thức ảo : Những phương thức ở lớp cha được kha báo với từ khóa virtual(ảo) thì các lớp
+con kế thừa từ nó sẽ cài đặt lại các phương thức trùng tên của lớp cha để cho phép các phương thức
+của lớp con có thể nạp chồng  lại được - định nghĩa lại các phương thức của lớp cha. 
+-   Nếu không có từ khóa virtual trước một phương thức trong lớp cha thì nếu ta 
+khởi tạo một con trỏ  Tên_Lớp_Cha  *x =new Ten_Lớp_Con thì nó sẽ chỉ luôn truy cập 
+đến phương thức trùng tên (Trùng với tên hàm mình gọi ra ý ) của lớp cha.
+-  Nếu có từ khóa virtual thì khi ta dùng lớp cha để khi chúng ta  dùng  lóp cha new ra một đối
+tượng con bất kì thì nó tự động truy cập vào phương thức trùng tên của lớp con
+- Chú ý phải trùng tên với lớp virtual
+- NOTE lại các lưu ý :
+   + Nếu như các  phương thức của lớp cha không có từ khóa "virtual" thì khi chúng ta new ra
+một đối tượng con bất kì thì nó sẽ mặc định chạy về phương thức trùng tên của lớp cha.
+   + Tác dụng của từ khóa "virtual" : Nếu như các phương thức của lớp cha có khai báo từ khóa 
+virtual thì khi new ra một cái đối tượng con bất kì thì khi đó nó sẽ chạy vào phương thức trùng
+tên của lớp con đó- Nó sẽ cho chúng ta gọi lại phương thức trùng tên của lớp con.
+-  Không có từ khóa virtual  thì mặc định khi tạo ra thằng con nào nó sẽ luôn chạy về thằng cha
+- Cú pháp :virtual Kiểu_Dữ_Liệu Tên_Phương_Thức(Các tham số truyền vào nếu có);
+
+
+
+- Phương thức thuần ảo : Những phương thức sẽ được khai báo ở lớp cha còn việc định nghĩa sẽ do
+các lớp con kế thừa từ nó đảm nhận
+- Cú pháp :virtual Kiểu_Dữ_Liệu Tên_Phương_Thức(Các tham số truyền vào nếu có)=0;
+- Lớp con một khi đã kế thừa phương thức thuần ảo từ lớp cha thì " bắt buộc " phải cài đặt lại 
+phương thức thuần ảo
+- Nếu lớp con không định nghĩa thì sẽ bị lỗi 
+
+-----------KHI NÀO DÙNG PT ẢO ,KHI NÀO DÙNG  PHƯƠNG THỨC THUẦN ẢO-----------
+-  ảo :Định nghĩa sự tính toán cho lớp  cha tức llaf các lớp con khi lấy sài công thức ấy vẫn 
+đúng 
+-  thuần ảo : Khai báo hàm tính toán cho lớp cha còn việc định nghĩa , tính  toán cho từng trường
+hợp lớp con là riêng biệt (mỗi lớp con sài một công thức)
+--> Dùng phương thức thuần ảo khi ở lớp cha có phương thức tính toán 
+--> Dùng phương thức ảo khi ở lớp cha có  phương thức tính toán
+- Tùy cơ ứng biến theo kinh nghiệm biến một phương thức thuần ảo sang  phương thức  ảo để code
+của chúng ta chạy một cách tối ưu nhất 
+- Ví dụ :
+A (Lớp cha)
+B :public A 
+C :public A 
+D :public A 
+
+// không có nhu cầu định nghĩa  lại  phương thứu thuần ảo  
+E :public A 
+F :public A 
+-> Viết phương thức thuần ảo thành pt ảo 
+
+-----------------------------------ÔN TẬP ĐA HÌNH TRÊN MẠNG--------------------------------
+- Trong các tình huống khác nhau, các đối tượng có thể có những hành vi(operator hoặc function)
+khác nhau để phù hợp với tình huống đó.
+- Trong C++, đa hình luôn đi kèm với kế thừa. 
+  +  Do tính kế thừa, một lớp có thể sử dụng lại các phương thức của lớp khác.
+  +  Lớp dẫn xuất(Lớp con ) cũng có thể định nghĩa lại một số phương thức của lớp cơ sở.
+  +  Với các phương thức giống nhau nhưng mỗi đối tượng lại có cách xử lý khác nhau.
+- Trong C++, các cách thể hiện của đa hình :
+  + Nạp chồng hàm (function overloading)
+  + Nạp chồng toán tử (operator overloading)
+  + Ghi đè hàm (function overriding)
+  + Hàm ảo (virtual function)
+  + Nạp chồng (overloading)
+* 2.1. Nạp chồng hàm (function overloading)
+   + Trong C++, 2 hàm có thể trùng tên với nhau nếu danh sách tham số của hàm là khác nhau. 
+   + Có thể khác nhau về số lượng tham số hoặc kiểu dữ liệu của tham số.
+    
+* 2.2. Nạp chồng toán tử (operator overloading)
+   + Nạp chồng toán tử được dùng để định nghĩa lại các toán tử có sẵn như ++, – -, +, -, *, /,… cho
+     kiểu dữ liệu (class) do người lập trình tự định nghĩa. 
+   + Nhằm tạo ra toán tử cùng tên nhưng thực hiện trên các lớp(Đối tượng được khởi tạo
+     của lớp A + Đối tượng được  khởi tạo bởi lớp B)  khác nhau chứ không phải trên 
+     các kiểu dữ liệu nguyên thủy.
+
+* 3. Ghi đè hàm (function overriding)
+   + Trong lớp dẫn xuất (derived class) có thể định nghĩa lại hàm thành phần của lớp cơ sở 
+     mà nó thừa kế được. 
+   + Như vậy, sẽ có hai phiên bản khác nhau của hàm thành phần trong lớp dẫn xuất.
+   + Trong phạm vi lớp dẫn xuất, hàm định nghĩa lại trong lớp dẫn xuất sẽ ghi đè (overriding) 
+     lên hàm được định nghĩa trong lớp cơ sở.
+
+* 4. Hàm ảo (virtual function)
+   + Trong C++, chúng ta không thể ghi đè hàm nếu sử dụng con trỏ kiểu lớp cơ sở trỏ đến đối
+     tượng của lớp dẫn xuất.
+   + Sử dụng hàm ảo trong lớp cơ sở để đảm bảo hàm trong lớp dẫn xuất ghi đè được hàm mà 
+     nó kế thừa từ lớp cơ sở.
+
+------------------------------------LỚP CƠ SỞ ẢO---------------------------------------
+- Hai lớp B và C kế thừa từ lớp A. Lớp D kế thừa từ cả hai lớp B và C 
+            lớp A được kế thừa hai lần bởi lớp D.
+ Lần thứ nhất được kế thừa        lần thứ hai được kế thừa
+ thông qua lớp B                  thông qua lớp C.
+- Lúc này, nếu đối tượng của lớp D gọi đến một hàm được kế thừa từ lớp A thì sẽ gây ra một
+sự mơ hồ. 
+- Không biết hàm đó được kế thừa gián tiếp từ lớp B hay lớp C.
+
+
+#include <iostream>
+using namespace std;
+class A{
+public:
+    void show(){
+        cout << "Hello from A \n";
+    }
+};
+class B : public A{
+};
+class C : public A{
+};
+class D : public B, public C{
+};
+void main(){
+	 D object;
+    object.show();//error: ambiguous access of 'show'
+	 system("pause");
+}
+===> Để giải quyết được vấn đề xung đột khi kết thừa đa tuyến tính như này thì chúng ta sẽ dùng
+cách "Kế thừa ảo "
+- Xung đột ở đây có thể do khi một lớp con kế thừa từ nhiều lớp cùng chung một lớp cơ sở, 
+các lớp cha có thể có các thành viên và phương thức trùng tên, dẫn đến xung đột và 
+mâu thuẫn trong quá trình biên dịch.
+- Khi bạn sử dụng kế thừa ảo, các lớp con kế thừa từ lớp cha chỉ một lần duy nhất,
+không bị nhân đôi. 
+- Điều này giúp giải quyết xung đột của thành viên và phương thức chung trong các lớp cha.
+- Bằng cách này, bạn có thể chia sẻ thông tin và chức năng giữa các lớp
+con một cách an toàn và rõ ràng.
+
+class A{
+//Định nghĩa lớp
+};
+class B : virtual public A{
+//Định nghĩa lớp
+};
+class C : virtual public A{
+//Định nghĩa lớp
+};
+class D : public B, public C{
+//Định nghĩa lớp
+};
+
+-  Việc chỉ định A là lớp cơ sở ảo trong các lớp B và C, nghĩa là A sẽ chỉ xuất hiện một lần
+trong lớp D.
+-  Khai báo này không ảnh hưởng đến các lớp B và C.
+
+#include <iostream>
+using namespace std;
+
+class A {
+public:
+    void sound() {
+        cout << "Animal sound" << endl;
+    }
+};
+
+class B : public virtual A {
+public:
+    void liveBirth() {
+        cout << "Live birth" << endl;
+    }
+};
+
+class C : public virtual A {
+public:
+    void layEggs() {
+        cout << "Lay eggs" << endl;
+    }
+};
+
+class D : public B, public C {
+public:
+    void uniqueFeature() {
+        cout << "Lays eggs and gives live birth" << endl;
+    }
+};
+
+int main() {
+    D p;
+    p.sound();
+    p.liveBirth();
+    p.layEggs();
+    p.uniqueFeature();
+
+    return 0;
+}
+ - Hiểu nôn na là nhờ  việc kết thừa ảo thì  các  phương thức chung của lớp cha A không  không  \
+bị kế thừa nhân đôi . Các tính chất đặc biệt của lớp kế thừa (Lớp D) không bị nhân đôi .

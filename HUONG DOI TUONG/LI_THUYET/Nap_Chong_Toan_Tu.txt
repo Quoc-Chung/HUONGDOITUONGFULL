@@ -1,0 +1,85 @@
+------------------------------------NẠP CHỒNG TOÁN TỬ ---------------------------------------
+- Nạp chồng toán tử được dùng để định nghĩa lại các toán tử có sẵn như ++, – -, +, -, *, /,… 
+cho kiểu dữ liệu (class) do người lập trình tự định nghĩa.
+- Nhằm tạo ra toán tử cùng tên nhưng thực hiện trên các lớp khác nhau chứ không phải trên các 
+kiểu dữ liệu nguyên thủy.
+- Các loại toán tử
+Trong C++ có các loại toán tử đơn, đôi, nhập xuất.
++ Toán tử đơn là toán tử một ngôi, nó có thể là toán tử trước, toán tử sau ví dụ ++ , --,...
+
++ Toán tử đôi là các toán tử hai ngôi: + , - , * , / ...
+
++ Toán tử nhập xuất là các toán tử chuẩn hóa theo thư viện
+       * istream (toán tử nhập >>) 
+ 
+       * ostream (toán tử xuất <<)
+-----------------CẤU TRÚC TOÁN TỬ MỘT NGÔI(MỘT BIẾN THAM GIA TÍNH TOÁN)-------------------
+   <kiểu trả về> operator <toán tử cần nạp chồng> (đối số 1)
+      {
+          xử lí
+       return <biến theo kiểu trả về>;
+   } 
+
+   -------ví dụ toán tử một ngôi---------
+- Đối với nạp chồng tiền tố, thì chúng ta cần phải cộng minute trước rồi mới làm việc,
+và khi cộng chúng ta nên chuẩn hóa thời gian lại.
+
+   ThoiGian  operator++  () // hàm nạp chồng toán tử ++ tiền tố
+    {
+        ++minute;        
+        if (minute >= 60)
+        {
+            ++hour;
+            minute -= 60;
+        }
+        return ThoiGian(hour, minute);
+    } 
+
+- Đối với nạp chồng hậu tố, thì chúng ta cần phải thêm 1 biến ThoiGian T để lưu giá trị
+thời gian thực hiện tại lại để sau khi làm xong câu lệnh chứa toán tử ++ hậu tố rồi mới 
+tăng giá trị minute lên thêm 1 đơn vị. 
+
+Ví dụ:
+
+ThoiGian operator++(int) //hàm nạp chồng toán tử ++ hậu tố
+    {
+        ThoiGian T(hour, minute);
+        ++minute;         
+        if (minute >= 60)
+        {
+            ++hour;
+            minute -= 60;
+        }
+        return T;
+    }
+------------------------------------------------------------------------------------------
+------------------CẤU TRÚC TOÁN TỬ HAI NGÔI(HAI BIẾN THAM GIA TÍNH TOÁN) ---------------
+     friend <kiểu trả về> operator <toán tử cần nạp chồng> (đối_số_1 , đối_số_2)
+      {
+         khởi tạo 1 đối tượng để gán giá trị
+         các phép gán giá trị
+     return đối tượng trả về
+   }
+   -------ví dụ toán tử hai ngôi---------
+     friend ThoiGian operator - (ThoiGian& T1, ThoiGian& T2) // nạp chồng toán tử - hai ngôi
+      {
+        ThoiGian T;
+        T.hour = T1.hour - T2.hour;
+        T.minute = T1.minute - T2.minute;
+        return T;
+   }
+----------------------------------------------------------------------------------------
+--------------------CẤU TRÚC TOÁN TỬ NHẬP XUẤT------------------------------------------
+-------TOÁN TỬ NHẬP------
+       friend istream operator << (istream &is , arg)
+      {
+        các câu lệnh bạn muốn nhập từ bàn phím cho các biến thành viên
+       return is;	
+   }
+-------TOÁN TỬ XUẤT------
+       friend ostream operator >> (ostream &os , arg)
+      {
+       các câu lệnh xuất ra màn hình
+    return os;	
+   }
+----------------------------------------------------------------------------------------

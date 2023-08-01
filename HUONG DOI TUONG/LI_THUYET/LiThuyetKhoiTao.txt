@@ -1,0 +1,215 @@
+--------------------------HÀM KHỞI TẠO  ( CONTRUCTOR )--------------------------------
+- Hàm khởi tạo  giúp cho  việc  khởi tạo giá trị cho một đối tượng sẽ trở nên dẽ dàng hơn là việc
+ta sẽ phải gán giá trị  cho  từng biến của một đối tượng .
+- Phương thức đặc biệt được gọi tự động tại thời điểm đối tượng được tạo. 
+- Mục đích của hàm khởi tạo là để khởi tạo các thành viên dữ liệu của đối tượng.
+- Một hàm khởi tạo sẽ khác những hàm thông thường ở những điểm sau:
+  + Hàm khởi tạo thường được viết trong class lun.
+  + Có tên trùng với tên lớp
+  + Không có kiểu dữ liệu trả về ( kể cả kiểu void)
+  + Tự động được gọi khi một đối tượng thuộc lớp được tạo ra
+  + Nếu chúng ta không khai báo một hàm khởi tạo, trình biên dịch C++ sẽ tự động tạo 
+một hàm khởi tạo mặc định cho chúng ta (sẽ là hàm ​​không có tham số nào và có phần thân trống).
+- Có hai loại hàm khởi tạo thông dụng :
+  + Hàm khởi tạo có tham số truyền vào.
+  + Hàm khởi tạo  không có tham số truyền vào.
+  + Hàm khởi tạo sao chép.
+- Ví dụ về hàm khởi tạo :
+
+class Mayvitinh{
+    public :
+    int chieudai;
+    string mausac;
+    public:
+        Mayvitinh();          // Đây là hàm khởi tạo mặc định 
+
+        Mayvitinh(int cd) {
+            chieudai = cd;
+        }
+
+        Mayvitinh(string ms) {         // Đây là hàm khởi tạo
+            mausac = ms;
+        }
+
+        Mayvitinh(int cd, string ms) { // Đây là hàm khởi tạo
+            chieudai = cd;
+            mausac = ms;
+        }
+};
+-----------VÍ DỤ VỀ HÀM  KHỞI TẠO  KHÔNG CÓ THAM SỐ TRUYỀN VÀO------------------
+#include <iostream>  
+using namespace std;  
+class Mayvitinh {  
+   public:  
+        Mayvitinh() {    
+            cout << "Ham khoi tao tu dong duoc goi." << endl;    
+        }    
+};  
+ 
+int main() {  
+    Mayvitinh mayAsus;     //khởi tạo đối tượng mayAsus
+    Mayvitinh mayAcer;     //khởi tạo đối tượng mayAcer
+    return 0;  
+}
+-------------VÍ DỤ VỀ HÀM KHỞI TẠO CÓ THAM SỐ TRUYỀN VÀO--------------------------
+#include <iostream>  
+using namespace std;  
+class Mayvitinh { 
+    int chieurong;   
+    int chieudai; 
+    string tenmay;
+    public:  
+       Mayvitinh(int cd) {    
+            chieudai = cd;
+       }
+       Mayvitinh(int cd, string tm) {    
+            chieudai = cd;    
+            tenmay = tm;
+            chieurong = 20;
+       }
+       Mayvitinh(int cd, string tm, int cr) {    
+            chieudai = cd;    
+            tenmay = tm;    
+            chieurong = cr; 
+       }    
+       void HienThi() {    
+            cout << tenmay << endl;
+            cout << "   Chieu dai: " << chieudai << endl;
+            cout << "   Chieu rong: " << chieurong << endl;
+       }    
+};  
+  
+int main() {  
+    Mayvitinh mayAsus =  Mayvitinh(50, "may Asus", 25);    
+    Mayvitinh mayAcer =  Mayvitinh(45, "mau Acer");
+    Mayvitinh mayMac =  Mayvitinh(30, "may Mac");
+    mayAsus.HienThi();    
+    mayAcer.HienThi();
+    mayMac.HienThi();
+    return 0;  
+}
+--------------VÍ DỤ VỀ  HÀM  KHỞI TẠO SAO CHÉP -----------------
+#include<bits/stdc++.h>
+using namespace std;
+class MayViTinh{
+  private :
+    int chieurong;
+    int chieudai;
+    string TenMay;
+  public :
+  MayViTinh(int chieurong,int chieudai,string TenMay){
+    this->chieurong=chieurong;
+    this->chieudai=chieudai;
+    this->TenMay =TenMay;
+
+  }
+  MayViTinh(int cr,int cd,string tm){
+    chieurong=cr;
+    chieudai=cd;
+    tenmay=tm;
+  }
+  // Hàm khởi tạo sao chép
+  ClassName(const ClassName &old_obj){
+       Code
+   }
+  Mayvitinh(Mayvitinh &m) {
+    tenmay = m.tenmay;
+    chieudai = m.chieudai;
+    chieurong = m.chieurong;
+       }
+  void HienThi() {    
+    cout << tenmay << endl;
+    cout << "   Chieu dai: " << chieudai << endl;
+    cout << "   Chieu rong: " << chieurong << endl;
+       }    
+};
+int main() {  
+    Mayvitinh mayAsus(50, "may Asus", 25);    
+    Mayvitinh mayAcer(mayAsus);
+    mayAsus.HienThi();    
+    mayAcer.HienThi();
+    return 0;  
+}
+-----------------------HÀM HỦY ---------------------
+- Hàm hủy (Destructor) ngược lại với hàm khởi tạo, trong khi
+hàm khởi tạo dùng để khởi tạo giá trị cho đối tượng thì hàm 
+hủy dùng để hủy đối tượng.
+
+- Chỉ có duy nhất một hàm hủy trong một lớp.
+- Hàm hủy tự động được gọi.
+- Nếu như chúng ta không định nghĩa hàm hủy thì mặc định 
+trình biên dịch sẽ tự tạo ra một hàm hủy mặc nhiên.
+- Cũng giống như hàm xây dựng, hàm hủy được định nghĩa có 
+cùng tên với tên lớp, khôn có bất cứ kiểu gì trả về kể cẳ kiểu void,
+tuy nhiên phải có dấu ~ trước tên của hàm hủy.
+- Cú pháp của hàm hủy :
+              ~Classname() { };
+hàm hủy (Destructor) sẽ được gọi tự động khi đối tượng đi ra khỏi phạm vi:
+    + Kết thúc hàm
+    + Kết thúc chương trình
+    + Kết thúc một block
+    + Toán tử delete được gọi
+- Ví dụ về hàm hủy:
+#include <iostream>  
+using namespace std;  
+class Mayvitinh  {  
+   public:  
+        Mayvitinh() {    
+            cout << "Ham khoi tao duoc goi" << endl;    
+        }    
+        ~Mayvitinh() {    
+            cout << "Ham huy duoc goi" << endl;    
+        }  
+};  
+int main() {  
+    Mayvitinh mayAsus;   
+    Mayvitinh mayAcer; 
+    return 0;  
+}
+- Khi chạy nó sẽ hiện ra:
++ Hàm khoi tao duoc goi
++ Ham khoi tao duoc goi
++ HAm huy duoc goi
++ Ham huy duoc goi
+
+#include<bits/stdc++.h>
+using namespace std;
+class Cat{
+ public :
+   string name;
+   int age;
+   string color;
+
+   int *arr;
+
+   Cat(sring name, int age,string color){
+    this->name=name;
+    this->age=age;
+    this-> color =color;
+    int arr=new int[10];
+   }
+
+   // XÂY DỤNG HÀM  DESTRUCTOR
+   ~Cat(){
+    cout <<"Destructor"<<endl;
+    delete arr;
+   }
+     
+
+   void display(){
+    cout<<name <<" "<<age<<" "<<color<<endl;
+   }
+};
+void funtion(){
+  Cat catt("Meo vui ve" ,2,"write");
+  catt.display();
+  delete catt.arr;
+
+  //catt.name="Meo vui ve";
+  //catt.age=2;
+  //catt.color="write";
+}
+int main(){
+   funtion();
+   return 0;
+}
