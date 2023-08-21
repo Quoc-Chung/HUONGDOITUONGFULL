@@ -1,10 +1,20 @@
 #include<bits/stdc++.h>
 using namespace std;
+int gcd(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
 class PhanSo {
-private:
+public:
     int TuSo;
     int MauSo;
 public:
+//  Trien khai ham khoi  tao co tham so truyen vao  
+    PhanSo();
     // Constructor có tham số
     PhanSo(int TuSo, int MauSo) {
         this->TuSo = TuSo;
@@ -17,16 +27,32 @@ public:
     void InPhanSo() {
         cout << "(" << TuSo << "/" << MauSo << ")";
     }
+    // Nap chong cong
+    friend PhanSo operator*(PhanSo &p1,PhanSo &p2){
+      PhanSo p3;
+      p3.TuSo = p1.TuSo * p2.TuSo;
+      p3.MauSo = p1.MauSo * p2.MauSo;
+      int gcdx =gcd(p3.TuSo,p3.MauSo);
+      p3.TuSo /= gcdx;
+      p3.MauSo /= gcdx;
+      return p3;
+    }
 };
+PhanSo::PhanSo()
+{
+  TuSo = 0;
+  MauSo = 1;
+}
 int main() {
-    int TuSo, MauSo;
-    cout << "Nhap Tu So cho Phan So: ";
-    cin >> TuSo;
-    cout << "Nhap Mau So cho Phan So: ";
-    cin >> MauSo;
-
-    PhanSo p(TuSo, MauSo); // Sử dụng constructor có tham số để khởi tạo đối tượng p
-    p.InPhanSo();
-
+   PhanSo p1,p2;
+   cout <<"\nNhap phan so thu nhat:";
+   p1.Nhap();
+   cout <<"\nNhap phan so thu hai:";
+   p2.Nhap();
+   cout<<"\nNhap phan so tich :";
+   PhanSo p3 = p1*p2;
+   p3.InPhanSo();
     return 0;
 }
+
+

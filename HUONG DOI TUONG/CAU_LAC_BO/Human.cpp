@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 class Human{
-  public :
+ private :
     string name;
     int age;
     float height;

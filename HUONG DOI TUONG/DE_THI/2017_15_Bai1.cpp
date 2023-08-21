@@ -15,6 +15,7 @@ class PS{
   public :
     //Hàm tạo không đối số
      PS() : TuSo(0), MauSo(1) {}
+     
     //Ham tao co hai doi so
     PS(int TuSo,int MauSo){
         this->TuSo=TuSo;
