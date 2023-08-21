@@ -170,7 +170,6 @@ public:
         cout << "Lay eggs" << endl;
     }
 };
-
 class D : public B, public C {
 public:
     void uniqueFeature() {
@@ -189,3 +188,4 @@ int main() {
 }
  - Hiểu nôn na là nhờ  việc kết thừa ảo thì  các  phương thức chung của lớp cha A không  không  \
 bị kế thừa nhân đôi . Các tính chất đặc biệt của lớp kế thừa (Lớp D) không bị nhân đôi .
+-  

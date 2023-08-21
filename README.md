@@ -1,3 +1,3 @@
 # HUONG_DOI_TUONG
-# CHung
+# Học  ngày  18 / 8
 C++

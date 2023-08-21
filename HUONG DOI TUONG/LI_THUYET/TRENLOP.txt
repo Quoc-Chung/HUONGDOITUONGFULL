@@ -1,0 +1,16 @@
+- Tham chiếu là bí danh của biến
+- khi tạo một tham chiếu ,  gán nó lên một đối tượng  khác thì tham chiếu hoạt động  như chính
+đối tượng  đã  gán đến nó 
+- Địa chỉ của tham chiếu là địa chỉ của đối tượng mà nó tham  chiếu  đến 
+- Nó cũng tương tự  như trong thực tế khi một bí danh  được gắn với một người nào đó cụ thẻ
+- biến tham chiếu :
++ Cú pháp :  Kiểu &btc = biến ;
++ ví dụ  :   int  a=5;
+- Hăng tham chiếu  : 
++  Cú pháp : const kiểu &htc = biến ; hoặc  const kiểu &htc = hằng ;
++  Ví dụ :   const int  &a   = a    ;       const int  &m1  = 5
+-  Khai báo hằng tham chiếu tức  là nó là một biến hằng tham chiếu nó không  thể được  làm thay
+đổi giá trị . Nếu không nó sẽ bị sai .
+- Hằng tham chiếu là  input  ---- biến tham chiếu là output
+- 
+       
