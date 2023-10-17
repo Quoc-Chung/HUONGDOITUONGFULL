@@ -1,0 +1,188 @@
+-  Hai loại độc giả là trẻ em và người lớn mà nếu như chúng ta muốn quản lí hai loại đọc giả
+ này thì thông thường chúng ta phải tạo ra hai vector hoặc hai mảng riêng để quản lí nó .
+- Nếu như có n loại độc giả thì phải cần  n mảng hay vector riêng biệt để quản lí 
+- Ta sẽ thấy sự bất tiện của kế thừa trong ví dụ sau :
++ Nếu độc giả có các thuộc tính sau :
+    + Họ tên 
+    + Ngày lập thẻ 
+    + Sô tháng có hiệu lực 
+ Đề yêu cầu "Hãy sắp xếp độc giả tăng dần theo số tháng có hiệu lực " 
++ Rõ ràng chúng ta sẽ thấy sự bất tiện ở đây , chả nhẽ giờ phải đi sắp xếp n lần các vector theo 
+cái điều kiện này à . Tại sao chúng ta không  gộp chúng lại thành một cái gì đó để chỉ cân một lần 
+sắp xếp là xong . Đù sao mình có thể nghĩ ra được hợp lí như vậy :))))
+- Chúng ta dùng đa hình nó sẽ không cần phân ra các loại gì nữa mà nó  sẽ gộp chung cho một lớp đại 
+diện , thông thường là lớp cha .
+- Việc dùng đa hình này vô tình nó sẽ phá vỡ bản chất của mảng 1 chiều đó  là một mảng có thể vừa 
+chứa trẻ em , vừa chứa người lớn.
+- Bên kế thừa không có vụ gom chung như thế được mà muốn gom chung như vậy ta phải dùng đa hình 
+
+
+- Đánh nhau có lính thủy , lính bộ , lính trên không  . Nếu như chúng ta không dùng đa hình thì 
+chúng ta phải hô ba lân : Lính bộ đánh , Lính thủy đánh , Lính trên không đánh. Còn khi chúng ta 
+mà dùng đa hình thì chỉ cần hô phát ba đạo quân sẽ lên nộp mạng một lúc luôn :))). Thằng lính thủy 
+nó sẽ biết nó đánh theo kiểu nó , thằng lính bộ nó sẽ bt nó đánh theo kiểu nó , thành lính trên không
+nó sẽ biết nó đánh theo kiểu nó. Chỉ cần dùng một phương thức thì nó sẽ tự động biết nó đánh theo
+gì , đánh như nao. Nói chung không có đa hình trong những trường hợp này thì nó sẽ rất rườm ràng
+
+
+- Phương thức ảo :
+- Cú pháp : 
+            virtual <Kiểu dữ liệu >  <Tên phương thức >  ( Các tham số truyền vào nếu có )
+
++ Những phương thức ở lớp cha được khai báo với từ khóa  " virtual " thì các  lớp con kế thừa từ nó
+cũng sẽ cài đặt lại các phương thức "  trùng tên  " của lớp cha để cho phép các phương thức của lớp con 
+có thể nạp chồng lại được.- Định nghĩa  lại phương thức của lớp cha
++ Phải đảm bảo các phương thức của lớp con phải  " TRÙNG TÊN " với các phương thức của lớp cha mới có 
+thể sử dung đa hình được .
+
+- Đã là đa hình thì bắt buộc phải đi với kế thừa thì mới sinh ra lớp cha vs lớp con để có thể đa 
+hình được 
+
+- Nếu như các  phương thức của lớp cha không có từ khóa "virtual" thì khi chúng ta new ra một cái
+đối tượng con bất kì thì nó sẽ mặc định chạy về phương thức trùng tên của lớp cha.
+
+- Nếu như các phương thức của lớp cha có khai báo từ khóa virtual thì khi new ra một cái đối tượng 
+con bất kì thì khi đó nó sẽ chạy vào phương thức trùng tên của lớp con đó  - nó cho chúng ta gọi lại
+phương thức trùng tên của lớp con .
+=================================================================================================
+- Phương thức thuần ảo : Những phương thức sẽ được khai báo ở lớp cha còn việc định nghĩa sẽ do
+các lớp con kế thừa từ nó đảm nhận 
+- Vô hình chung thì mọi ngóc ngách đều bắt nguồn từ thằng cha mà ra ,những thằng con chỉ đi cài đặt
+những gì đã có từ thằng cha ra thôi chứ chẳng có gì hết .
+- Cú pháp :
+
+      <virtual>  <Kiểu dữ liệu>  <Tên phương thức> ( Các tham số truyền vào nếu có ) = 0;
+
+- Khi nào dùng phương thức ảo , khi nào dùng phương thức thuần ảo 
+     - Cái thuần ảo là ta chỉ khai báo trong lớp cha thôi còn việc định nghĩa sẽ do các lớp con 
+đảm nhận .
+     - Còn cái ảo thì khi ta định nghĩa nó rồi thì buộc các lớp con kế thừa từ nó sẽ phải đi kế thừa
+lại các phương thức ảo ở lớp cha .
+     - Cái thuần ảo mà lớp cha nó đang mang thì bắt buộc các lớp con kết thừa từ nó sẽ phải đi định nghĩa 
+lại phương thức thuần ảo đó nếu không sẽ bị sai .
+     
+
+- Nếu như ở lớp cha có khai báo phương thức thuần ảo thì quy tắc các lớp con được kế thừa từ lớp cha 
+đó bắt buộc phải đi định nghĩa lại phương thức thuần ảo của lớp cha mà nó kế thừa 
+- Nếu lớp con mà không định nghĩa thì nó sẽ bị lỗi .
+
+- Nếu ở lớp cha có khai báo các phương thức thuần ảo - thì quy tắc các lớp con nào mà kế thừa lại
+từ lớp cha đó thì các lớp con kế thừa từ lớp cha đó bắt buộc phải đi định nghĩa lại phương thức
+thuần ảo của lớp cha đó - nếu lớp con mà không định nghĩa sẽ bị lỗi .
+- Thứ tự gọi các hàm :
+      Gọi hết các hàm ảo - thuần ảo trong lớp cha(Nhưng cái hàm thuần ảo này lại được định
+              nghĩa bởi lớp con nhé ) mà lớp con kế thừa 
+                                 |
+                    gọi đến các hàm của lớp con 
+            
+-  KHI NÀO DÙNG PHƯƠNG THỨC THUẦN ẢO -  PHƯƠNG THỨC ẢO
++ Ở lóp cha có hàm tính toán riêng 
++ Ở lớp con cũng lại là hàm đấy nhưng giờ lại là một phương thức mới riêng thì chúng ta sẽ sử dụng 
+phương thức thuần  ảo để làm . Còn nếu chúng ta ngựa ngựa lại đi viết hàm ảo thì tất cả (bao gồm
+cả lớp cha và lớp con cùng dùng chung một công thức là sai quá sai luôn còn  gì nữa )
++ Nói chung thì việc dùng hàm  ảo hay hàm thuần ảo phải phụ thuộc vào dữ kiện mà bài toán đưa ra 
+chứ không thể thích làm cái đéo gì cũng đc.
++ Ví dụ như bài này thì chúng ta phải sử dụng phương thức thuần ảo :
+     - Có hai loại độc giả : Trẻ em và người lớn
+          + Độc giả trẻ em cần lưu thêm thông tin họ tên người đại diện 
+          + Tiền làm thẻ tính theo công thức : Số tháng có hiệu lực * 5000 Đ
+
+          + Độc giả người lớn cần lưu thêm thông tin số CMND
+          + Tiền làm thẻ tính theo công thức : Sô tháng có hiệu lực * 10000 Đ
+- 
+
++ Có cách biến từ thuần ảo sang ảo :
+
+- Dùng phương thức ảo khi ở lớp cha tồn tại phương thức để tính toán chung và có thể áp dụng công
+thức tính toán này cho tất cả kể cả với lớp con . Còn nếu như ở lớp cha không có công thức mà ở lớp
+con lại có từng loại phương thức tính toán thì chúng ta sẽ dùng phương thức thuần ảo sau đó với mỗi lớp
+dẫn xuất ( lớp con ) thì chúng ta sẽ phải định nghĩa lại để phù hơp với từng lớp con.
+
+- Dùng phương thức  ảo khi ở lớp cha nó có thông tin để tính toán. 
+- Dùng phương thức thuần ảo khi ở lớp cha nó không có thông tin để tính toán.
+
+TÙY CƠ ỨNG BIẾN :
+- Biến một phương thức thuần ảo sang phương thức ảo 
+- Ví dự như bài như này chúng ta phải tùy biến này :
+      A :cha 
+      B : public A
+      C : public A
+      D : public A
+
+
+      E : public A
+      F : public A
+
+- với đề bài thì yêu cầu lớp B, C, D phải đi tính toán tiền lương , giả dụ như tiêng lương của 
+nhân viên . Còn lớp E , F thì không phải tính 
+- Nếu như với bài này chúng ta sử dụng phương thức thuần ảo để viết một hàm tính toán tiền lương 
+thì có phải là tất cả các lớp con kế thừa từ lớp A phải đi định nghĩa lại phương thức thuần ảo đó
+không , khi đó thì có phải có hai lớp E , F không yêu cầu tính toán tiền lương thì vẫn phải đi định
+nghĩa không . Nó sẽ có dạng như này nè :
+
+
+      A :cha  : Chứa phương thức thuần ảo tính tiền lương
+      B : public A  ( Phải định nghĩa lại )
+      C : public A  ( Phải định nghĩa lại )
+      D : public A  ( Phải định nghĩa lại )
+
+
+      E : public A  ( Phải định nghĩa lại ) ( Nhưng mà nó lại không cần dẫn đến thừa )
+      F : public A  ( Phải định nghĩa lại ) ( Nhưng mà nó lại không cần dẫn đến thừa )
+- > Chúng ta phải biến phương thức ảo ở lớp cha thành phương thức thuần ảo để từ đó thằng nào cần
+thì mới nạp chồng thôi còn không cần thì thôi .  
+      
+      A :cha : Chứa phương thức thuần ảo tính tiền lương -> phương thức ảo 
+      B : public A  ( Nạp chồng lại hàm  )
+      C : public A  ( Nạp chồng lại hàm  )
+      D : public A  ( Nạp chồng lại hàm )
+
+
+      E : public A  (Khong viet ham trùng tên vs hàm ảo của lớp cha và sử dụng các hàm riêng của mình)
+      F : public A  (Khong viet ham trùng tên vs hàm ảo của lớp cha và sử dụng các hàm riêng của mình)
+                   
+
+                   ÔN TẬP VỀ CẤP PHÁT ĐỘNG CON TRỎ CÁC LỚP
+
+                  Kiểu  *Contro  =  new  Đối_Tượng_Của_Lop_Duoc_Tro_Den.
++ Thứ nhất là việc Sử dụng đa hình và ghi đè (override) giúp bạn thực hiện gọi hàm phụ thuộc vào kiểu
+thực sự của đối tượng mà con trỏ đang trỏ đến. 
++ Ví dụ như là ta có : ConNguoi *c = new HocSinh(); nếu chúng ta sử dụng ghi đè (virtual) trong phương thức 
+show của lớp cha thì con trỏ sẽ được trỏ đến đúng hàm show của lớp Học Sinh (Lơp mà con trỏ kiểu con người trỏ đến .)
+ 
++ Thứ nhất ta luôn biết rằng một con trỏ của lớp cơ sở có thể trỏ đến đối tượng của lớp cơ sở đó cũng như đối tượng của
+các lớp dẫn xuất của nó.
+
++ Câu lệnh ConNguoi *c = new HocSinh(); là một ví dụ về đa hình (polymorphism) trong C++ sử dụng con trỏ và kế thừa.
+
++ ConNguoi *c: Khai báo một con trỏ có kiểu dữ liệu là ConNguoi. Điều này có nghĩa rằng bạn có một con trỏ
+có thể trỏ đến các đối tượng thuộc lớp ConNguoi hoặc các lớp dẫn xuất từ ConNguoi.
+
++ new HocSinh();: Đây là việc tạo một đối tượng thuộc lớp HocSinh thông qua toán tử new. Đối tượng này được cấp phát
+trong vùng nhớ heap (bộ nhớ động).
+
++ Khi bạn kết hợp cả hai bước trên lại với nhau, bạn đang tạo một con trỏ c có kiểu ConNguoi và trỏ đến một đối tượng
+của lớp HocSinh. Điều này là hợp lệ bởi vì HocSinh là một lớp dẫn xuất từ ConNguoi, và con trỏ của lớp cơ sở có thể
+trỏ đến đối tượng của lớp dẫn xuất.
+
++ Sử dụng đa hình và ghi đè (override) trong trường hợp này, khi bạn gọi c->Show();, hàm Show() sẽ được gọi từ lớp 
+HocSinh, không phải từ lớp cơ sở ConNguoi. Điều này giúp bạn thực hiện gọi hàm phụ thuộc vào kiểu thực sự của đối
+ tượng mà con trỏ đang trỏ đến. 
+
+     
++ Tong đoạn mã ConNguoi *c = new HocSinh();, con trỏ c ban đầu trỏ đến một đối tượng thuộc lớp HocSinh.
+Điều này có nghĩa rằng tại thời điểm này, con trỏ c đang trỏ đến lớp HocSinh.
+
+Khi bạn gọi hàm thành viên c->Show();, hàm Show() sẽ được gọi dựa trên kiểu thực sự của đối tượng mà con trỏ c đang
+trỏ đến tại thời điểm đó. Trong trường hợp này, kiểu thực sự của đối tượng là HocSinh, vì bạn đã tạo một đối tượng
+HocSinh và gán nó cho con trỏ c.
+
+Vì vậy, trong đoạn mã này, khi bạn gọi c->Show();, hàm Show() của lớp HocSinh sẽ được gọi, và nó sẽ in ra "Con nguoi
+ lop hoc sinh.". Điều này là một ví dụ của tính đa hình (polymorphism) trong C++, nơi hàm được gọi phụ thuộc vào kiểu 
+ thực sự của đối tượng được trỏ bởi con trỏ tại thời điểm runtime.
+
+
+
+
+ 
+

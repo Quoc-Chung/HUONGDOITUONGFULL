@@ -1,0 +1,60 @@
+- Để có quyền được phép định nghĩa lại một hàm đã được khai báo  trong class cha , tức là nếu chúng
+ta muốn viết một hàm có tên , kiểu dữ liệu , nhưng khác chức năng trong hàm chính thì chúng ta sẽ
+phải khai báo phương thức ảo để làm điều đó. Tức là chúng ta sẽ khai báo một phương thức trong lớp 
+cha mà sử dụng từ khóa " virtual " trước cái phương thức đó .
+
+- Từ khóa override trong khai báo hàm double area() override được sử dụng để chỉ ra rằng hàm này 
+đang ghi đè (override) một hàm ảo từ lớp cơ sở.
+- Ta sẽ viết từ khóa " override " sau Tên_Hàm() :   Kiểu_Trả_Về  Ten_Ham()  override {}
+- Nếu như không có tù khóa này thì chương trình vẫn chạy bình thường .
+
+Cụ thể, nó có mục đích sau:
++  Xác minh đúng ghi đè (Override): Sử dụng từ khóa override giúp đảm bảo rằng bạn đang cố ghi đè 
+một hàm ảo từ lớp cơ sở. Nếu bạn sử dụng override mà hàm này không ghi đè một hàm ảo từ lớp cơ sở, 
+hoặc nếu tên hàm, kiểu trả về, hoặc số lượng tham số không khớp, trình biên dịch sẽ phát ra một 
+lỗi.
++  Giúp Đọc Hiểu Code Dễ Dàng: Từ khóa override là một dấu hiệu cho lập trình viên khác (hoặc chính
+bạn trong tương lai) biết rằng hàm này đang được sử dụng để ghi đè và không phải là một hàm thông
+thường. Điều này làm cho code dễ đọc và dễ hiểu hơn.
+
++  Tính An Toàn: Giúp tránh nhầm lẫn và lỗi khi code được bảo trì hoặc mở rộng trong tương lai. Nếu 
+bạn cố ghi đè một hàm mà không sử dụng override, bạn có thể tạo ra một hàm mới mà không nhận ra.
+
++ Tóm lại, từ khóa override giúp kiểm tra và bảo đảm tính đúng đắn của việc ghi đè (override) hàm 
+ảo từ lớp cơ sở, làm cho code rõ ràng và an toàn hơn.
+
+                          PHÂN TÍCH KHI CÓ HAY KHÔNG CÓ OVERRIDDE THÌ CÓ SAO KHÔNG
+
+- Khi bạn sử dụng từ khóa virtual trong khai báo hàm ảo, nó cho biết rằng lớp cơ sở có một 
+hàm ảo có thể được ghi đè (override) bởi các lớp dẫn xuất. Nếu một lớp dẫn xuất có một hàm có
+cùng tên, kiểu trả về và số lượng tham số với hàm ảo của lớp cơ sở, thì nó được coi là ghi 
+đè (override) hàm ảo từ lớp cơ sở.
+
+Trong ví dụ của bạn:
+        virtual double area() {
+            return 0;
+        }
+- Đây là một hàm ảo với tên area(). Bất kỳ lớp dẫn xuất nào cũng có thể ghi đè nó bằng một
+hàm area() riêng của họ có cùng tên, kiểu trả về, và số lượng tham số. Điều này cho phép 
+các lớp dẫn xuất cung cấp triển khai riêng cho hàm area() sao cho nó tính diện tích phù hợp 
+với loại hình cụ thể của lớp đó (như tam giác hoặc hình chữ nhật).
+
+
+- Từ khóa override trong C++ là một dấu hiệu nhận biết việc ghi đè hàm ảo từ lớp cơ sở. Nếu bạn 
+xóa nó đi, code có thể vẫn biên dịch thành công, nhưng điều quan trọng là nó giúp tạo ra một 
+cơ chế kiểm tra và đảm bảo tính đúng đắn của việc ghi đè.
+
+- Nếu bạn sử dụng override trong khai báo hàm ảo và viết sai tên hàm hoặc kiểu trả về, trình biên
+dịch sẽ báo lỗi. Điều này giúp bạn phát hiện và sửa lỗi một cách dễ dàng hơn, và ngăn chặn việc
+không cố ý ghi đè một hàm khác.
+
+- Ví dụ, nếu bạn xóa override như sau:
+        virtual double area() {
+            return 0;
+        }
+--> Thì code có thể vẫn biên dịch thành công, nhưng nếu bạn có một lỗi nào đó trong tên hàm hoặc
+kiểu trả về của hàm area() trong lớp dẫn xuất, bạn có thể không nhận được thông báo lỗi từ 
+trình biên dịch. Từ khóa override giúp bạn tránh được trường hợp này bằng cách yêu cầu tính 
+chính xác trong việc ghi đè hàm ảo.
+
+- 

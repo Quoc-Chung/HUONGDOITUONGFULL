@@ -1,0 +1,99 @@
+- Sự cho phép đa kế thừa trong c++ dẫn đến một số hậu quả xấu :
+    Là sự đụng độ giữa các thành phần của các lớp cơ sở, khi có ít nhất 
+    hai lớp cơ sở lại cùng được kế thừa từ một lớp cơ sở khác. 
+
+- Sự mơ hồ xảy ra khi bạn kế thừa từ nhiều lớp cùng chứa một lớp cơ sở và bạn không xác
+định rõ lớp cơ sở nào cần sử dụng trong lớp con. Điều này có thể dẫn đến xung đột và 
+sự không rõ ràng trong việc truy cập dữ liệu từ các lớp cơ sở.
+
+
+   + Lớp Bus kế thừa từ lớp Car và lớp PublicTransport. 
+   + Nhưng lớp Car và lớp PublicTransport lại cùng được thừa kế từ lớp Engine (động cơ).
+   + Lớp Engine có một thuộc tính là power (công suất của động cơ). 
+
+                                   Engine (cha ) (mang thuộc tính power)
+                                
+                     Car                        PublicTransport     
+
+                                    Bus
+- Tóm tắt vắn tắt :
+         Bus : public Car , public PublicTransport 
+
+         Car             : public Engine
+         PublicTransport : public Engine
+
+- Ta có thể thấy rằng 
+ - các thành phần của lớp cha cụ bị lớp Bus kế thừa hai lần 
+     + một lần do kế thừa theo đường Bus::Car::Engine,
+     + một lần theo đường Bus::PublicTransport::Engine. 
+-> Điều này gây nên sự mơ hồ.
+ - Khi khai báo một đối tượng của lớp Bus, hàm khởi tạo của lớp Engine cũng được gọi hai lần:
+     + một lần do gọi truy hồi từ hàm khởi tạo lớp Car.
+     + một lần do gọi truy hồi từ hàm khởi tạo lớp PublicTransport. 
+ - Khi giải phóng một đối tượng của lớp Bus, hàm huỷ bỏ của lớp Engine cũng sẽ bị gọi tới hai lần.
+
+ - Nói chung rất nhiều thứ mà khi ta làm việc với lớp Bus sẽ kéo theo rất nhiều lần không đáng có 
+một chút nào cả , điều này gây nên sự mơ hồ.
+
+====> Để tránh các vấn đề này, C++ cung cấp một khái niệm là kế thừa từ lớp cơ sở trừu tượng. 
+
+     +  Ta cho các lớp Car và PublicTransport kế thừa trừu tượng từ lớp Engine. 
+     +  Các thành phần của lớp Engine chỉ xuất hiện trong lớp Bus đúng một lần. 
+     +  Lớp Engine được gọi là lớp cơ sở trừu tượng của các lớp Car và PublicTransport.  
+
+- CÚ PHÁP KHAI BÁO LỚP CƠ SỞ TRỪU TƯỢNG :
+     class <Tên lớp cơ sở>:  <Từ khoá dẫn xuất>  virtual  <Tên lớp cơ sở>{ 
+           …  // Khai báo các thành phần bổ sung 
+    }; 
+
+- VÍ DỤ :
+class Engine{ 
+    _ _ _ _ _ _ _ _ _ _ _
+    };
+------- là khai báo lớp Car, kế thừa từ lớp cơ sở trừu tượng Engine, theo kiểu dẫn xuất public ----
+class Car: public virtual Engine{ 
+     _ _ _ _ _ _ _ _ _ _ 
+    };
+
+- Khi bạn sử dụng virtual trong đa kế thừa đa cấp, nó đảm bảo rằng " chỉ có một bản sao duy
+nhất của lớp cơ sở được tạo ra và chia sẻ bởi tất cả các lớp con ".
+==> Điều này giúp tránh xung đột và đảm bảo rằng việc truy cập dữ liệu từ các lớp con sẽ không
+gây ra sự mơ hồ.
+
+- HÀM KHỞI TẠO CỦA LỚP CƠ SỞ TRỪU TƯỢNG :
+            class Engine{  
+                    public: 
+                        Engine(){… }; 
+            }; 
+
+            class Car: public virtual Engine{  	//Lớp cơ sở virtual  	
+                 public: 
+                       Car(): Engine(){… }; 
+            }; 
+
+
+            class PublicTransport: public virtual Engine{ //Lớp cơ sở virtual  	
+                public: 
+                        PublicTransport():Engine(){… }; 
+            }; 
+
+            class Bus: public Car, public PublicTransport{  	
+                public: 
+                 // Gọi hàm khởi tạo tường minh của lớp cơ sở trừu tượng 
+                    Bus():Engine() , Car(), PublicTransport(){… }; 
+            }; 
+
+- Trong lớp cha "Engine" thì vẫn khởi tạo bình thường 
+- Trong lớp kế thừa 1 "Car" thì :
+               + Có từ khóa virtual 
+               + Trong danh sách hàm tạo có thêm hàm tạo lớp cha 
+- Trong lớp kế thừa 2 "PublicTransport" thì :
+               + Có từ khóa virtual 
+               + Trong danh sách hàm tạo có thêm hàm tạo lớp cha 
+
+- Trong lớp Bus kế thừa cả lớp 1 và lớp 2 : 
+               + Trong danh sách khởi tạo có thêm hàm khởi tạo 
+            của lớp cha boss "Engine" mà lớp 1,2 kế thừa và cả hai lớp mà nó kế thừa "Car" và 
+            " PublicTransport ".
+
+

@@ -1,0 +1,19 @@
+class A {
+public:
+void func();
+};
+class B: private class A { };
+...
+int main() {
+A a;
+B b;
+a.func();
+b.func(); // error
+A* pa = &b;
+B* pb = &a; // error
+}
+- thứ nhất là B kế thừa A nhưng theo phạm vi truy xuất là private thì B chỉ có thể truy cập các 
+thuộc tính cũng như thành phần của lớp cha ( Lớp A) chứ không thể truy xuất nó khi ra khỏi class
+- thứ hai là gây ra lỗi vì bạn không thể gán một con trỏ của lớp cơ sở A với một đối tượng của 
+lớp dẫn xuất B khi kế thừa là private và ngược lại cộng với việc không có các hàm operator= nữa dẫn
+đến bị sai.

@@ -1,13 +1,5 @@
 #include<bits/stdc++.h>
 using namespace std;
-int gcd(int a, int b) {
-    while (b != 0) {
-        int temp = b;
-        b = a % b;
-        a = temp;
-    }
-    return a;
-}
 class PhanSo {
 public:
     int TuSo;
@@ -32,12 +24,10 @@ public:
       PhanSo p3;
       p3.TuSo = p1.TuSo * p2.TuSo;
       p3.MauSo = p1.MauSo * p2.MauSo;
-      int gcdx =gcd(p3.TuSo,p3.MauSo);
-      p3.TuSo /= gcdx;
-      p3.MauSo /= gcdx;
       return p3;
     }
 };
+// Hàm  khởi tạo không có đối số truyền vào 
 PhanSo::PhanSo()
 {
   TuSo = 0;

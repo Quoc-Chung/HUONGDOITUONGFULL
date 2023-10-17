@@ -1,0 +1,2 @@
+Cần thiết phải sử dụng “const &” khi viết hàm toán tử operator= là để đảm bảo việc gán giá trị 
+từ vế phải sang vế trái không xảy ra thay đổi giá trị (const).

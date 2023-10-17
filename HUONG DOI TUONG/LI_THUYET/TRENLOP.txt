@@ -12,5 +12,70 @@
 -  Khai báo hằng tham chiếu tức  là nó là một biến hằng tham chiếu nó không  thể được  làm thay
 đổi giá trị . Nếu không nó sẽ bị sai .
 - Hằng tham chiếu là  input  ---- biến tham chiếu là output
-- 
-       
+- Mở rộng  về đói  của hàm (sử dụng  kiểu tham chiếu) 
+- Hàm trùng tên : Số lượng đối hoặc kiểu của đối phải khác nhau, Khi gọi hàm trùng tên ,bộ
+dịch căn cứ vào só lương đối và kiểu của đối đẻ gọi đén hàm tương ứng
+- Hàm  toán tử :
+  + Tên  của hàm  : operator phép toán 
+  + Ví dụ : operator +  hoặc  operator >  hoặc  operator >> hoặc  operator << 
+  + Ý  nghĩa : Sau khi  định nghĩa hàm toán tử đối với kiểu do người dùng  tự   định nghĩa thì 
+có thẻ thực hiện  các phép  toán trên kiểu dữ liệu này đối với kiểu dữ  liệu chuẩn (nguyen ,thuc)
+  + ví dụ hàm toán tử nhập  1 sinh  viên :
+       istream&  operator>> (istream &inp ,kiểu dữ liệu  &bien){
+           return inp;
+       }
+
+       ostream& operator<< (ostream &os , kiểu dữ liệu  &bien){
+
+        return os;
+       }
+ - Hàm mẫu template function 
+  Ý nghĩa :  Xây dựng (sử dụng ) hàm độc lập  với áp  dụng  đc cho mọi kiểu dữ  liệu 
+      template<class T>  kieu ham   TenHam(Danh sach doi so ){
+         
+      }  
+ - Tổng quát chung về Ý nghĩa của các HÀM TOÁN TỬ ,HÀM TRÙNG TÊN ,HÀM MẪU
+ -HÀM TOÁN TỬ NHẬP CHỒNG :
+ + Hàm toán tử nhập  xuất , tính  toán  dùng để định nghĩa  lại  việc nhập  suất một 
+kiểu cấu trúc.
+ + Nghĩa là ban đầu chúng ta không thể viết như này " cin >> sv[i] " được vì  ban  đầu  sv[i] 
+này là một kiểu cấu trúc  , muốn  cin ra luôn thì chúng ta phải xây dựng hàm toán tử đại diện
+nhập cho 1 sinh viên rồi  từ đó chúng ta mới có thể cin >> sv[i] (lúc này nó  sẽ đại diện cho 
+các thuộc tính của sinh viên) như mảng một cách bình thường được.
+ + Một giải thích khác là chúng ta có một kiểu struct như này:
+          struct PhanSo{
+              int TuSo;
+              int MauSo;
+          };
+  + Chúng ta không thể lấy hai phân số thuộc kiểu struct này cộng với nhau  được nhưng chúng ta
+có thể giải quyết sự  bất cập này bằng cách sử dụng HÀM NẠP CHỒNG TOÁN TỬ 
+ - HÀM MẪU :
+  + Chúng ta muốn giảm thiểu số lượng các dòng code + với việc rút ngắn thời gian code đi 
+thì chúng ta sẽ viết các hàm nhập, xuất ,tính toán  đại diện cho cả kiểu mảng , kiểu cấu trúc,
+kiểu ma trận  đều có thể dùng được 
+  + Trong hầu hết các trường hợp chúng ta phỉa viết hàm toán tử của các biến kiểu cấu  trúc
+chúng ta muốn sử dụng các  hàm mẫu chung với mảng thì chúng ta phải đưa chúng về kiểu của mảng 
+bằng cách viết các  hàm  nạp  chồng toán  tử 
+ - HÀM  TRÙNG TÊN :
+     -Đẻ dễ dàng thuận tiện trong việc ghi nhớ tên hàm thì chúng ta có một cách  rát hiệu quả mà 
+c++ hỗ trợ đó là viết các  hàm có  cùng chức năng (ví dụ như in một cái gì đó , nhập một cái  gì
+đó, tính  toán một cái  gì đó ) cùng một tên miễn là các hàm có cùng  chức  năng như này phải
+có cùng chúc năng này phải có sự khác nhau về các  đối số truyền vào hàm để trình biên dịch có 
+thể nhận  diện được các hàm  chuẩn xác .  
+- Các lớp khác  nhau nó sẽ phân loại các đối  tượng thành các khu vực khác nhau
+- Lớp là kiểu dữ liệu do người dùng tự định nghĩa bao gồm cả dữ liệu (thuộc  tính) và hàm (phương thức ) 
+xử lí dữ liệu 
+- Lớp có  cấu trúc như sau :
+class Ten_Lop{
+  Phạm vi truy xuất : Khai báo các kiểu dữ liệu thành phần  
+  Khai báo các kiêu dữ liệu  thành phần ;
+
+};
+
+-  Trong các hàm khởi tạo không có đối  số truyền vào 
+thì có ta thường thấy sự  xuất hiện  của " nullptr ".
+Đây là nghĩa là con  trỏ không trỏ đến bất kì biến nào 
+- Nó được xem là phiên bản cải tiến  của c++11 từ con
+trỏ NULL đã được sử dụng ở các phiên bản trước đó.
+
+

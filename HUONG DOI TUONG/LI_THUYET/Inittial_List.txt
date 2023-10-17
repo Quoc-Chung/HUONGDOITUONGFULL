@@ -1,0 +1,57 @@
+
+                              MEMBER INITIALIZER LISTS 
+- C++ đã cung cấp một phương thức để khởi tạo các biến thành viên của class (thay vì gán các giá trị 
+cho chúng sau khi chúng được tạo ra) thông qua một danh sách khởi tạo biến thành viên – member 
+initializer list (thường được gọi là “member initialization list”). 
+
+- Ta có thể khởi tạo giá trị cho các thuộc tính trong đối tượng bằng cách sử dụng danh sách khởi tạo
+để khỏi tạo thay vì sử dụng hàm khởi tạo không đối số truyền vào hoặc hàm khởi tạo có đối só truyên
+vào .
+
+- Người ta cũng chia ra hai loại hàm sử dụng danh sách khởi tạo :
+      + Hàm khởi tạo sử dụng danh sách khởi tạo không có đối số truyền vào.
+      + Hàm khởi tạo sử dụng danh sách khởi tạo có đối số truyền vào.
+
+- Cấu trúc của INIT_L không đối số :
+            ------------------------------------------------
+            |  Tên_Lớp () :  Thuộc_Tính (Giá trị khởi tạo) |
+            ------------------------------------------------
+             
+      + Ví dụ về loại hàm này khởi tạo sử dụng INIT_L không đối số:
+                class Engine {
+                   private:
+                       int power;
+                   public:
+                       Engine() : power(0) {}
+                };
+
+- Cấu trúc của INIT_L có đối số truyền vào :
+            ------------------------------------------------------------------------  
+            | Tên_Lớp ( Đối_Số_Truyền_Vào ) : Thuộc_Tính (Đối_Số_Truyền_Vào_Tg_Ứng)|
+            ------------------------------------------------------------------------
+         
+      + Ví dụ về loại hàm khởi tạo INIT_L có đối số truyền vào :
+                class Engine {
+                   private:
+                      int power;
+                   public:
+                       Engine(int power) : power(power) {}
+                };
+- Thông thường chúng ta hay khởi tạo như này :
+class Something
+{
+private:
+    int m_value1;
+    double m_value2;
+    char m_value3;
+ 
+public:
+    Something()
+    {
+        // These are all assignments, not initializations
+        m_value1 = 1;
+        m_value2 = 2.2;
+        m_value3 = 'c';
+    }
+};
+

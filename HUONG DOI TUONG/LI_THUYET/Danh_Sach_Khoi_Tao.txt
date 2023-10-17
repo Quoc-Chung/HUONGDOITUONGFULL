@@ -1,0 +1,64 @@
+                              INITTIALIZER LIST
+- Danh sách khởi tạo  dùng để khởi tạo  các thành viên dữ  liệu của một lớp 
+- Các thành viên  sẽ được khởi tạo  chỉ ra với hàm  tạo  là một danh sách nằm phía sau dấu () của hàm
+khởi tạo thông thường  , và các thành viên sẽ được ngăn cách  với nhau bằng dấu phaaryb 
+- Tiếp theo chúng ta sẽ  đi đến những ví dụ về hàm  khởi tạo  :
+- VÍ DỤ THỨ NHẤT :
+                class DaThuc {
+            private:
+                int bac;        // Bậc của đa thức
+                double* heSo;   // Mảng lưu trữ các hệ số của đa thức
+            public:
+                // Constructor để khởi tạo đa thức với bậc = n và các hệ số ban đầu
+                    DaThuc(int n) : bac(n) {
+                        heSo = new double[n + 1]; // Mảng có kích thước bậc + 1
+                    for (int i = 0; i <= bac; i++) {
+                        heSo[i] = 0.0; // Khởi tạo tất cả hệ số ban đầu là 0
+                    }
+                    }
+                }
+- VÍ DỤ THỨ HAI :
+            class Point {
+            private:
+                int x;
+                int y;
+            public:
+            // Khởi tạo  danh sách khởi tạo x gán bằng i y gán bằng j 
+                Point(int i = 0, int j = 0):x(i), y(j) {}
+                /*  Danh sách khởi tạo trên là tuỳ chọn vì
+                    vì hàm tạo cũng có thể viết như sau:
+                    Point(int i = 0, int j = 0) {
+                        x = i;
+                        y = j;
+                    }
+                */   
+            }
+- TÁC DỤNG CỦA VIỆC DÙNG DANH SÁCH KHỞI TẠO :
++ Để khởi tạo các biến( thuộc tính ) được khai báo là  const  
+                    class Test {
+                        const int t;
+                    public:
+                        Test(int t):t(t) {}
+                    }
+
++ Để khởi tạo  các biến( thuộc  tính) được khai báo là & , tức là được khai báo là biến tham chiếu :
+                    class Test {
+                        int &t;
+                    public:
+                        Test(int &t):t(t) {}  //Phải dùng danh sách khởi tạo
+                    }
+
++ Thường được khởi tạo khi tham chiếu (đối số truyền vào hàm khởi tạo ) giống y hệt với thuộc tính
+hay còn  gọi là những biến chúng ta hay khai báo trong lớp :
+                        class A {
+                            int i;
+                        public:
+                            A(int );
+                        };
+                        
+                        A::A(int i):i(i) { }  // Phải dùng con trỏ this hoặc danh sách khởi tạo
+                        /* Hàm tạo trên có thể viết lại như sau:
+                        A::A(int i) {
+                            this->i = i;
+                        }
+                        */                                         

@@ -1,0 +1,21 @@
+                   PHƯƠNG THỨC TĨNH
+- Phương thức tính được gọi từ một đối tượng : 
++ Đối tượng của lớp nào thì phương thức của lớp đó
+sẽ được gọi .
+- Được gọi từ một con trỏ đối tượng : Con trỏ đối 
+tượng của lớp nào thì phương thức của lớp đó sẽ được
+gọi (Con trỏ đối tượng của lớp cơ sở lưu trữ được địa
+chỉ của lớp dẫn xuất).
+
+                   PHƯƠNG THỨC ẢO 
+- Được gọi từ 1 đối tượng : Đối tượng của lớp nào thì 
+phương thức của lớp đó sẽ được gọi.
+- Được gọi từ một con trỏ đối tượng : Con trỏ đối tượng
+chứa địa chỉ nào thì phương thức của lớp đó sẽ được gọi.
+- Con trỏ đôi tượng của lớp cơ sở chứa được địa chỉ của
+lớp dẫn xuất.
+
+- Phương thức thuần ảo :Là phương thức không có nội
+dung mà được định nghĩa ở trong các lớp dẫn xuất.
+- Một lớp chứa phương thức thuần ảo được gọi là lớp cơ sở
+trừu tượng. Lớp này được dùng làm cơ sở 

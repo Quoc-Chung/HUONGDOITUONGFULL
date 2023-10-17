@@ -1,0 +1,9 @@
+- Khái niệm kế thừa  là một trong những tính chất đặc trưng của hướng đối tượng .
+- Nghĩa là một class thừa hưởng lại tất cả các thuộc tính, phương thức của class mà nó kế thừa.
+- Tính kế thừa là các lớp mới(lớp dẫn xuất – derived class) từ các lớp đã có 
+(lớp cơ sở – base class). 
+-  Kế thừa nhằm tái sử dụng lại mã chương trình.
+-  Một lớp có thể là lớp cơ sở cho nhiều lớp mới(lớp dẫn xuất) khác nhau.
+-  Lớp dẫn xuất (con class) kế thừa (inherit) từ lớp cơ sở(base class):
+      + thuộc tính 
+      + phương thức

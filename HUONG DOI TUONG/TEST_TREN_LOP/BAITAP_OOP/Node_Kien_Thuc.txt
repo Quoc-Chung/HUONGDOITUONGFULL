@@ -1,0 +1,55 @@
+- Bài 1 : PHÂN SỐ
+ PhanSo RutGon(){
+        int glc = __gcd(x, y);
+        x /= glc;
+        y /= glc;
+        return *this; // Trả về đối tượng gốc sau khi rút gọn
+     }
+--------------------------------------------------------------
+- Bài 2 : ĐA THỨC
+
+   DaThuc(int Bac, float *hs) {
+        this->Bac = Bac;
+        this->hs = new float[Bac];
+     for (int i = 0; i < Bac; i++) {
+        this->hs[i] = hs[i];
+      }
+   }
+            float num1 = (i <= Bac) ? hs[i] : 0;
+            float num2 = (i <= b.Bac) ? b.hs[i] : 0;
+-----------------------------------------------------------------
+- Bài 3 : MA TRẬN VUÔNG
+    Thuộc tính :
+       int n;
+       float **tp; 
+    Cấp phát  :
+        tp = new float *[n];
+        for (int i = 0; i < n; i++) {
+           tp[i] = new float[n];
+        }
+   
+-----------------------------------------------------------------
+- Bài 4 : MA TRẬN  CỠ  M*N :
+      MT(int m, int n) {
+            this->m = m;
+            this->n = n;
+            tp = new float*[m];
+            for (int i = 0; i < m; i++) {
+                  tp[i] = new float[n];
+            }
+         }
+- Quy tắc cấp phát một ma trận là chúng ta sẽ cấp phát cho từng hàng 
+của ma trận trước, sau đó từ những hàng đã được cấp phát này, chúng 
+ta tiếp tục cấp phát cho các phần tử trong hàng đó của ma trận.
+
+- Hiểu đơn  giản cho  cách  viết quy  tắc cấp phát trên là chúng ta 
+sẽ dùng một ma trận bằng mảng con trỏ hai chiều (mảng hai chiều động):
++  Cấp phát một mảng con trỏ chứa các dòng của ma trận (dòng của mảng 
+con trỏ này có thể hiểu là mảng con trỏ đến mảng con).
++  Cấp phát bộ nhớ cho từng dòng của ma trận.
++  float** matrix = new float*[m]; 
+-> Cấp phát một mảng con trỏ chứa m phần tử, mỗi phần tử là một con trỏ
+đến một dòng của ma trận.
++ Tiếp theo for được sử dụng để cấp phát bộ nhớ cho từng dòng. Mỗi dòng 
+là một mảng float có n phần tử (số cột của ma trận).
+-------------------------------------------------------------------------------

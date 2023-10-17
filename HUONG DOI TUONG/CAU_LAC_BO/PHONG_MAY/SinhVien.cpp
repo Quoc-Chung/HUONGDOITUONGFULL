@@ -4,9 +4,9 @@ class  SinhVien {
     private :
       string  HoTen  ;
       int  MaSinhVien;
-      float Diem;
+      float ;
     public : 
-      float getDiem() const { return Diem; }
+      float get() const { return ; }
 
       void NhapSinhVien(){
         cout<<"Nhap ho ten sinh vien: ";
@@ -14,20 +14,20 @@ class  SinhVien {
         getline(cin,HoTen);
         cout<<"Nhap ma sinh vien: ";
         cin>>MaSinhVien;
-        cout<<"Nhap diem: ";
-        cin>>Diem;
+        cout<<"Nhap : ";
+        cin>>;
       }
       void XuatSinhVien(){
         cout<<"Ho ten sinh vien: "<<HoTen<<endl;
         cout<<"Ma sinh vien: "<<MaSinhVien<<endl;
-        cout<<"Diem: "<<Diem<<endl;
+        cout<<": "<<<<endl;
       } 
 
 };
 void SinhVienSapXep(SinhVien *sv,int n){
     for (int i=0;i<n;i++){
         for  (int  j=0;j < n; j++){
-            if (sv[i].getDiem() > sv[j].getDiem()){
+            if (sv[i].get() > sv[j].get()){
                 SinhVien temp = sv[i];
                 sv[i] = sv[j];
                 sv[j] = temp;

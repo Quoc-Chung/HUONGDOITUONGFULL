@@ -32,7 +32,6 @@ class PS{
         }
       }
 };
-
 int main(){
    PS p1,p2;
    cout <<"\nNhap p1:";

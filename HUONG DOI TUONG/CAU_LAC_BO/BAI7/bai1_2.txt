@@ -1,0 +1,5 @@
+Bài 1:
+      Start A Start B Start C End B End A
+      100
+Bài 2: ACABD
+       ~D~B~A~C~A

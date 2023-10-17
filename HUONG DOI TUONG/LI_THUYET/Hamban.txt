@@ -1,0 +1,13 @@
+- Hàm  bạn là hàm mà có thể truy xuất các thành viên private của lớp 
+- Trong hàm f nếu được khai báo là hàm bạn thì sẽ truy xuất được đến  các thành phần private của lớp A
+- Khai báo hàm bạn f là bạn của lớp A 
+class A {
+    friend kiểu_ham f(ds Doi){     }
+};
+
+Hoặc class A{
+    friend kieu_ham f(ds doi);
+};
+
+kiểu_ham f(ds doi){ }
+- Phân biệt hàm bạn  và hàm của lớp  :

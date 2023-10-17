@@ -2,7 +2,6 @@
 - Lớp bạn (friend class) là lớp có thể truy cập các thành phần private hoặc protected của 
 lớp xem nó là bạn.
 - Ví dụ lớp B là  bạn của lớp A --> Lớp B có thể truy cập các thuộc tính private của lớp A
-
 #include<bits/stdc++.h>
 using namespace std;
 class MyClass1
@@ -50,3 +49,10 @@ mà nó lại cứ muốn truy  cập vào thành phần  private của MyClass1
       friend class MyClass2;
    }
 --------------------------------------------------
+-Chúng ta thường để nó  là  private nếu  có hai chú gấu và DockerVic
+- Thứ nhất là chú gấu vàng có một chiếc bánh  và muốn cho chú gấu nâu một chiếu  bánh 
+- Chú gấu vàng nếu để bánh ở phạm vi truy cập là public thì chú gấu nâu có thể lấy được bánh nhưng
+trong  trường hợp để public này  thì  DockerVic cũng sẽ lấy được bánh  để ăn
+- Để DockerVic không lấy được bánh mà chỉ chú gấu nâu có thể lấy được bánh thì  chúng  ta chỉ có cách
+là dùng hàm bạn  ,  tức  là gấu vàng đặt cái bánh có phạm  vi truy  cập là private  , sau đó  lớp gấu nâu'
+sẽ được coi  lớp gấu vàng là bạn và dùng được còn  DockerVic thì  cút  

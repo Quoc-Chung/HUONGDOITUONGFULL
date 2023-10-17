@@ -1,0 +1,103 @@
+
+- Hàm ảo (virtual functions) trong c++ được sử dụng để tạo ra tính " đa hình " trong C++ , cho phép
+các đối tượng có thể thực hiện các hành động khác nhau dựa trên kiểu thực sự của chúng
+- Khi tôi nói " dựa trên kiểu thực sự của chúng " , tôi đang đề cập đến việc chúng ta có thể gọi ra
+các phương thức dựa trên thực tế là lớp con nào đang được sử dụng. Thay vì kiểu của con trỏ hoặc 
+tham chiếu.
+- Ta có thể xét ví dụ dưới đây thấy rõ được điều đó :
+
+
+- Trong ví dụ này, khi chúng ta gọi myAnimal->sound(), nó sẽ dựa trên kiểu thực sự của đối tượng
+ mà con trỏ myAnimal đang trỏ đến để xác định phương thức sound() nào nên được gọi. 
+- Điều này cho phép chúng ta sử dụng cùng một con trỏ myAnimal để thực hiện các phương thức khác 
+nhau dựa trên kiểu thực sự của đối tượng, trong trường hợp này là Dog và Cat. 
+- Đây chính là tính chất đa hình (polymorphism) trong lập trình hướng đối tượng.
+
+-  Hàm ảo là một hình thức của đa hình động (runtime polymorphism) và cho phép bạn
+ghi đè (override) các hàm trong các lớp dẫn xuất để cung cấp triển khai cụ thể cho từng lớp.
+-  Ghi đè ở đây là việc cho phép định nghĩa lại một hàm đã được viết sẵn trong lớp cơ sở .
+
+
+- Dưới đây là một số ví dụ minh họa cụ thể về cách sử dụng hàm ảo và ý nghĩa của chúng:
+1. Đa hình với hàm ảo trong lớp cơ sở và lớp dẫn xuất:
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Animal {
+public:
+    virtual void sound() {
+        cout << "Animal makes a sound." << endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    void sound() override {
+        cout << "Dog barks." << endl;
+    }
+};
+
+class Cat : public Animal {
+public:
+    void sound() override {
+        cout << "Cat meows." << endl;
+    }
+};
+
+int main() {
+    Animal* myAnimal = new Dog();
+    myAnimal->sound(); // Output: "Dog barks."
+
+    myAnimal = new Cat();
+    myAnimal->sound(); // Output: "Cat meows."
+
+    delete myAnimal;
+    return 0;
+}
+
+
+Trong ví dụ này, chúng ta sử dụng hàm ảo sound() trong lớp cơ sở Animal và ghi đè nó trong các 
+lớp dẫn xuất Dog và Cat. Khi gọi hàm sound() thông qua con trỏ đối tượng, nó sẽ thực hiện hành
+ động tương ứng với kiểu thực sự của đối tượng.
+
+2. Sử dụng hàm ảo để định nghĩa giao diện:
+
+Trong ví dụ này, chúng ta sử dụng hàm ảo pure virtual area() để định nghĩa một giao diện cho các 
+lớp hình học. Các lớp dẫn xuất Circle và Rectangle cung cấp triển khai cụ thể cho hàm ảo này.
+ Điều này cho phép chúng ta sử dụng các lớp hình học khác nhau mà không cần quan tâm đến kiểu 
+ thực sự của đối tượng.
+
+Tóm lại, hàm ảo cho phép bạn tạo tính đa hình trong lập trình hướng đối tượng, tạo giao diện và 
+cung cấp triển khai cụ thể cho từng lớp dẫn xuất, giúp code trở nên linh hoạt và dễ bảo trì.
+==================================================================================================
+    Shape *myShape = new Circle(5.0); tạo một con trỏ có kiểu là Shape và gán cho nó địa chỉ của
+một đối tượng thuộc kiểu Circle.
+    Đoạn mã này tạo một đối tượng hình học kiểu hình tròn (Circle) và gán địa chỉ của nó cho con
+trỏ myShape.
+  
+    myShape = new Rectangle(4.0, 6.0); tạo một đối tượng hình học kiểu hình chữ nhật (Rectangle) và
+gán địa chỉ của nó cho con trỏ myShape.
+    Đoạn mã này ghi đè giá trị trước đó của con trỏ myShape, nghĩa là nó không còn trỏ đến đối 
+tượng hình tròn nữa mà trỏ đến đối tượng hình chữ nhật thay thế.
+
+==> Tóm lại, việc sử dụng con trỏ myShape như vậy cho phép chúng ta tạo và thay đổi kiểu của đối 
+tượng mà con trỏ này trỏ đến. Điều này là một ví dụ về tính đa hình (polymorphism) trong lập
+trình hướng đối tượng, cho phép chúng ta  "sử dụng một con trỏ hoặc tham chiếu để thực hiện các
+hành động khác nhau dựa trên kiểu thực sự của đối tượng được trỏ đến, trong trường hợp này
+là Circle và sau đó là Rectangle "
+
+- Hãy nhớ rõ kiến thức khắc cốt ghi tâm này :
+ + Việc khai báo một con trỏ (Kiểu con trỏ này là lớp cha ) trỏ đến một đối tượng ( Kiểu lớp con ) là
+một trong những ví dụ rất điển hình cho tính đa hình .
+ + Chúng ta có thể từ đó sử dụng con trỏ này tham chiếu đến phương thức thực các lớp con nếu như cái
+phương thức ở lớp con này có khả năng ghi đè  ( Tức là hàm ảo của lớp cha đã đc định nghĩa virtual)
+ + Chúng ta có thể sử dụng con trỏ này để hoặc tham chiếu để thực hiện các hành động khác nhau dựa
+trên kiểu thực sự của đối tượng được trỏ đến.
+
+         Shape *myShape = new Circle(5.0); 
+         + Kiểu thực sự của đối tượng đang trỏ đến lúc này là Circle 
+         + Tức là lúc này ta dùng con trỏ *myShape trỏ đến phương thức của lớp Circle thì nó sẽ 
+         gọi ra đúng phương thức ấy chứ không phải mấy phương thức lomdom (Giống kiểu -Tên ) có 
+         trong lớp cha( Lớp Shape )
+
