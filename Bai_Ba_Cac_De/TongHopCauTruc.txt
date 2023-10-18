@@ -1,0 +1,74 @@
+- Dạng bài này lúc nào cũng yêu cầu nhập hai class :
+- class thứ nhất là một đối tượng để biểu diễn 
+- class thứ hai dùng để quản lí nhiều đối tượng class 1 
+
+- Cấu trúc của nó như sau : 
+
+class Đối_Tượng_1 {
+   private :
+      - Các thuộc tính - 
+   public :
+      - Khởi tạo không đối số -
+      - Hàm toán tử nhập -
+      - Hàm toán tử xuất - 
+      - Phương thức lấy một cái gì đó ( bài yêu cầu )
+};
+class Quan_Li_Doi_Tuong_1 {
+    private :
+       - Có hai trường hợp khai báo 
+             +  vector < Đối_Tượng_1 > qlDoiTuong;
+             +  list <Đối_Tượng_1> qlDoiTuong;
+    public :
+        - Hàm thêm một đối tượng : Truyền vào một Đối_Tượng_1 + Dùng hàm push_back
+
+        - Hàm xóa một đối tượng : Duyệt bằng iterator + hàm erase(it)
+
+        - Hàm InDanhSach: Dùng vòng lặp base_range_for_loop( Tham chiếu )
+
+        - Hàm tìm kiếm ( Tuần tự hoặc nhị phân )
+
+                ThiSinh* TimKiemThiSinhTheoSoBaoDanh(int SoBaoDanh){
+                        for(ThiSinh &ts :danhsachThiSinh){
+                            if(ts.GetSoBaoDanh() == SoBaoDanh){
+                            /* - Trả về ThiSinh*  == &ts - */
+                                    return &ts;
+                            }                
+                        }
+                        return nullptr;
+                }
+
+                Laptop* TimLaptopTheoMa(int maMay) {
+                        int right = qlLapTop.size() - 1;
+
+                        while (left <= right) {
+                            int middle = left + (right - left) / 2;
+                            if (qlLapTop[middle].getMa_May() == maMay) {
+                                return &qlLapTop[middle];
+                            } else if (qlLapTop[middle].getMa_May() < maMay) {
+                                left = middle + 1;
+                            } else {
+                                right = middle - 1;
+                            }
+                        }
+                        return nullptr;
+                }
+};
+
+
+- Để lấy giá trị của phần tử thứ i trong mảng a, bạn sử dụng: a[i].
+- Để lấy địa chỉ của phần tử thứ i trong mảng a, bạn sử dụng: &a[i].
+- Dùng vòng lặp range base for loop :
+     Nếu dùng tham chiếu tức là : &x : a
+                 + Giá trị của x sẽ được gán bằng đúng giá trị của a[i] tại vòng lặp thứ i
+                 + Địa chỉ của x cũng chính là địa chỉ của a[i] tại vòng lặp thứ i 
+                 + Những gì ta thay đổi giá trị với biến x diễn ra trong vòng lặp cũng sẽ làm thay đổi 
+             giá trị của biến trong mảng a
+                 + Ta có thể dùng tham chiếu này cho những bài cần trả về đúng địa chỉ của giá trị mảng, 
+             nhập dữ liệu
+    
+    Nếu không dùng tham chiếu mà làm như bình thường (kiểu như duyệt tham trị ) : 
+                 + Giá trị của x cũng sẽ tương đương với lệnh trỏ đến giá trị của a 
+                 + Địa chỉ của x chưa chắc lưu trữ địa chỉ của biến a 
+
+
+      

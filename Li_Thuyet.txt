@@ -1,0 +1,68 @@
+- Các  loại phương thức lập trình như là :
++ Lập trình tuyến tính .
++ Lập trình logic 
++ Lập trình hàm 
++ Lập trình hướng cấu trúc 
++ Lập trình hướng đối tượng (Phổ biến nhất)
+- Hướng chức năng giải quyết các bài toán bằng cách phân rã nó ra,
+định nghĩa các cấu trúc dữ liệu .
+- Hướng đối tượng thì tập trung vào đối tượng cần xử lí,xây dựng các
+lớp để mô tả cho đối tượng cần xử lí ,ưu điểm của nó là có khả năng 
+kế thừa và sử dụng lại , dễ dàng sửa đổi cấu trúc dữ liệu mà không 
+ảnh hưởng đến các cấu trúc trước đó . Nhược điểm là chương trình khá
+khó hiểu , phải đòi hỏi tư duy trừu tượng cao 
+- Phân tích cách làm của bài laptop :
++ Chúng ta có thể nhận thấy  ( thuộc tính + Phương thức ) để ở chế độ public 
++ Các tham chiếu truyền vào hàm openrator nhập xuất phải để ở chế độ tham chiếu 
+        class Laptop{
+        public:
+            ......
+        public: 
+                friend istream& operator>>(istream& is, Laptop &lt){
+                ...... 
+                return is;
+            }
+                friend ostream& operator<<(ostream& os, Laptop &lt){
+                ......
+                return os;
+            }
+        };
++ Chúng ta kế thừa lại lớp Laptop để có thể dùng các hàm cũng như các thuộc tính 
++ Để vector ở chế độ protected để lớp con của nó có thể được kế thừa 
++ Các hàm nhập danh sách lap top thì mình sẽ truyền vào tham số vector<Laptop> vt
++ Riêng với hàm nhập thì chúng ta phải truyền tham chiếu cho vector 
+        class QuanLiLapTop : public Laptop{
+        protected: 
+            vector<Laptop> vtLapTop;
+        public :
+            void NhapMotLapTop(Laptop &ltx) {
+                ......
+            }
+            void NhapDanhSach(vector<Laptop> &vt, int &n) {
+                ......
+            }
+            void DanhSachLap(vector<Laptop> lt){
+               .......
+            }
+                void TongGiaTriLaptonKho(string &HangTonKho, vector<Laptop> ltx) {
+                ltx.size()
+                  ......
+            }
+        };
+        int main(){
+            QuanLiLapTop quanLi; // Khai báo một lớp quản lí 
+
+            // Khai báo các biến truyền vào hàm 
+            vector<Laptop> danhSachLapTop;
+            int n;
+            // Dùng hàm quản lí truyền vào các hàm  .
+            quanLi.NhapDanhSach(danhSachLapTop, n);
+            quanLi.DanhSachLap(danhSachLapTop);
+            string HangTonKho;
+            quanLi.TongGiaTriLaptonKho(HangTonKho,danhSachLapTop);
+        }
+-  Trong ngôn ngữ lập trình C++, hàm bạn (friend function) là một loại 
+hàm đặc biệt mà bạn có thể khai báo trong một lớp và cho phép nó truy 
+cập vào các thành viên riêng tư (private) của lớp đó. 
+-  Hàm bạn không phải là thành viên của lớp, nhưng nó có quyền truy cập
+các thành viên riêng tư của lớp như một lớp bạn (friend class).
