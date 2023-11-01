@@ -1,0 +1,64 @@
+-	Khuôn mẫu là một từ khóa trong c++ là một kiểu  dữ liệu trừu tượng 
+-	Báo cho  trình biên dịch biết rằng đoạn mã có thể sử dụng cho nhiều kiểu dữ liệu 
+-	Có hai loại template cơ bản bao gồm :
++ Khuôn mẫu hàm (function template ) : Định nghĩa các hàm tổng quát có thể thao tác cho nhiều kiểu dữ liệu .
+ + Khuôn mẫu lớp (class template ) : Định nghĩa tổng quát cho nhiều kiểu dữ liệu .
+-	Các hàm template được định nghĩa bắt đầu bằng từ khóa template theo sau là các tham
+số hình thức với hàm template vây quanh trong các ngoặc nhọn ( < và > )
+-	Mõi tham số hình thức phải được đặt trước bởi từ khóa class như :
+template <class T>
+template< class T1,class T2>
+
+#include<bits/stdc++.h>
+using namespace std;
+template <class T>
+T myAbs(T x){
+	return x> 0 ? x : -x;
+}
+// Có thể áp dụng cho  hàm tìm hai tham số truyền vào  
+template < class T>
+T Max(T a, T b){
+	return  a >  b ? a : b;
+}
+int main(){
+	
+}
+
+
+-	Lớp template nó mang đầy đủ ý tưởng của hàm template :
++ Giả sử để cài đặt một lớp stack , thường chúng ta phải định nghĩa trước một kiểu dữ liệu cho từng phần tử của nó .
++ Nhưng trong trường hợp tổng quát nó sẽ không được tối ưu . Nên chúng ta sẽ sử dụng lớp template để cài đặt.
+
+-	#include<bits/stdc++.h>
+-	using namespace std;
+-	template <class T>
+-	class Stack{
+-		private:
+-			int size;
+-			int top;
+-			int *a;
+-		public:
+-			Stack(int size);
+-			~Stack();
+-			bool IsEmpty()
+-		    bool IsFull();
+-			void Push(T item);
+-			T pop();
+-	};
+-	template<class T>
+-	T Stack<T> ::pop(){
+-		if(!IsEmpty()){
+-			return a[top--];
+-		}
+-	}
+-	template<class T> 
+-	void Stack<T>::Push(T item){
+-		if(!IsFull){
+-			a[++top]=item;
+-		}
+-	}
+-	
+-	
+-	int main(){
+-		
+-	}

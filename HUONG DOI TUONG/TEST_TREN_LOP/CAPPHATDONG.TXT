@@ -1,0 +1,17 @@
+  new int; 
+--> cấp phát động một số nguyên (kiểu dữ liệu có thể thay đổi)
+ 
+
+  int *ptr = new int;
+
+--> cấp phát động một số nguyên và gán địa chỉ cho con trỏ ptr nắm giữ 
+
+  Shape *myShape = new Circle(5.0); 
+
+--> tạo một con trỏ kiểu Shape và gán cho nó một đối tượng kiểu Circle
+
+   Dòng code này thường được sử dụng trong trường hợp đa hình (polymorphism)
+khi bạn muốn làm việc với các đối tượng của các lớp dẫn xuất thông qua một
+con trỏ hoặc tham chiếu kiểu lớp cơ sở.
+
+

@@ -11,7 +11,7 @@ public:
     int getNamXuatBan() {
         return NamXuatBan;
     }
-    istream& operator >>(istream& is, Book& k) {
+   friend istream& operator >>(istream& is, Book& k) {
     cout << "\nNhap Ma Sach :";
     is >> k.MaSach;
     cin.ignore(); // Clear the input buffer (consume newline)
@@ -26,7 +26,7 @@ public:
     getline(is, k.NhaXuatBan);
     return is;
 }
-     ostream& operator<<(ostream& os, Book k) {
+    friend ostream& operator<<(ostream& os, Book k) {
         cout << "\nNhap Ma Sach :" << k.MaSach;
         cout << "\nNhap Ten Sach:" << k.TenSach;
         cout << "\nNhap  Tac Gia:" << k.TenTacGia;

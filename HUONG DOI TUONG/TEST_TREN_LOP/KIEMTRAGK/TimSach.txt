@@ -1,0 +1,66 @@
+  void TimNhungQuyenSachCungTenTacGia(Book* b, int n) {
+
+Máp này có firsst là string lưu trữ tên tác giả,  second  là một vector lưu trữ các sách có cùng tác giả  
+
+    map<string, vector<string>> sachCungTacGia; 
+    for (int i = 0; i < n; i++) {
+
+// Lấy ra tác giả
+        string tacGia = b[i].TenTacGia;
+// Lấy ra tên sách 
+        string tenSach = b[i].TenSach;
+// Kiểm tra tên tác giả đã tồn tại trong map chưa nếu chưa thì thêm tên tasc giả với tên sách đầu tiên mà tác giả đó viết vào trong map        
+
+        // Kiểm tra tên tác giả đã tồn tại trong map chưa
+        if (sachCungTacGia.find(tacGia) == sachCungTacGia.end()) {
+            // Nếu chưa tồn tại, thêm tác giả và tên sách đầu tiên của họ vào map
+            sachCungTacGia[tacGia] = {tenSach};
+
+mp[key] = value  hay dùng cây lệnh insert cũng được
+
+// Nếu tác giả đã tồn tại trong map rồi thì cho tên sách  vào thôi 
+        } else {
+            // Nếu tác giả đã tồn tại, thêm tên sách của họ vào danh sách
+            sachCungTacGia[tacGia].push_back(tenSach);
+        }
+    }
+// Duyệt qua map của tác giả dùng vòng lặp range_base_for_loop với tham chiếu đó nó tham chiếu trực tiếp đến cái mp sach cung tác giả  
+    // Duyệt qua map để in thông tin
+    for (auto& it : sachCungTacGia) {
+// Lấy ra it.first tức là lấy ra giá trị key === Tên tác giả 
+        string tacGia = it.first;
+khai báo một vector lấy ra tên sách của tác giả con trỏ trỏ đến 
+        vector<string> tenSach = it.second;
+
+// in ra tác giả cũng như tên của từng quyển sách 
+        cout << "Tac gia: " << tacGia << endl;
+        cout << "Danh sach sach cua tac gia: ";
+        for ( string& ten : tenSach) {
+            cout << ten << ", ";
+        }
+        cout << endl;
+    }
+
+map trong C++ là một container (đối tượng lưu trữ dữ liệu) được sử dụng để lưu trữ các cặp key-value. Nó là một dạng của associative array, nghĩa là bạn có thể tìm kiếm dữ liệu bằng key (như là một từ điển).
+
+Đối tượng key phải là duy nhất trong map, tức là không có key trùng lặp.
+Mỗi key tương ứng với một giá trị (value).
+Cấu trúc dữ liệu map được cài đặt dưới dạng cây nhị phân cân bằng (AVL tree hoặc Red-Black tree) trong đó dữ liệu được sắp xếp dựa trên key. Điều này cho phép tìm kiếm nhanh chóng.
+
+Trong trường hợp của câu lệnh:
+
+cpp
+Copy code
+sachCungTacGia[tacGia] = {tenSach};
+Câu lệnh này thêm một cặp key-value vào map sachCungTacGia. Key là tacGia (tên tác giả), và value là một danh sách chứa một phần tử là tenSach (tên sách).
+
+Nếu tacGia chưa tồn tại trong map, nó sẽ được thêm vào map với tenSach là giá trị ban đầu,
+
+sachCungTacGia[tacGia].push_back(tenSach);
+
+- Các cách thêm các cặp giá trị key - value :
+
+myMap[key] = value;
+
+pair<KeyType, ValueType> myPair(key, value);
+myMap.insert(myPair);

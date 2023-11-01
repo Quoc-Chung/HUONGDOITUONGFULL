@@ -1,1 +1,0 @@
-vector vt1,vt2;

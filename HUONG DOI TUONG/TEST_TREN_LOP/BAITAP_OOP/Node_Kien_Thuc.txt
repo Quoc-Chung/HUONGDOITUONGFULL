@@ -1,13 +1,15 @@
 - Bài 1 : PHÂN SỐ
+- (*this) trong hướng đối tượng  luôn trỏ đến đối tượng hiện tại của 
  PhanSo RutGon(){
         int glc = __gcd(x, y);
         x /= glc;
         y /= glc;
         return *this; // Trả về đối tượng gốc sau khi rút gọn
      }
+    
 --------------------------------------------------------------
-- Bài 2 : ĐA THỨC
 
+- Bài 2 : ĐA THỨC
    DaThuc(int Bac, float *hs) {
         this->Bac = Bac;
         this->hs = new float[Bac];
@@ -38,6 +40,8 @@
                   tp[i] = new float[n];
             }
          }
+
+
 - Quy tắc cấp phát một ma trận là chúng ta sẽ cấp phát cho từng hàng 
 của ma trận trước, sau đó từ những hàng đã được cấp phát này, chúng 
 ta tiếp tục cấp phát cho các phần tử trong hàng đó của ma trận.
@@ -47,9 +51,80 @@ sẽ dùng một ma trận bằng mảng con trỏ hai chiều (mảng hai chi�
 +  Cấp phát một mảng con trỏ chứa các dòng của ma trận (dòng của mảng 
 con trỏ này có thể hiểu là mảng con trỏ đến mảng con).
 +  Cấp phát bộ nhớ cho từng dòng của ma trận.
-+  float** matrix = new float*[m]; 
+
++  float **matrix = new float*[m]; 
 -> Cấp phát một mảng con trỏ chứa m phần tử, mỗi phần tử là một con trỏ
 đến một dòng của ma trận.
 + Tiếp theo for được sử dụng để cấp phát bộ nhớ cho từng dòng. Mỗi dòng 
 là một mảng float có n phần tử (số cột của ma trận).
 -------------------------------------------------------------------------------
+Phiên bản truyền thống:
+Đây là phiên bản không sử dụng đệ quy của thuật toán Euclid. Nó hoạt động như sau:
+
+Bắt đầu với hai số nguyên dương, a và b.
+Lặp lại các bước sau cho đến khi bằng 0:
+Tìm phần dư của a chia cho b, gán cho r: r = a % b.
+Cập nhật a = b và b = r.
+Khi b bằng 0, GCD của a và b là a.
+Phiên bản mở rộng (sử dụng đệ quy):
+Đây là phiên bản sử dụng đệ quy của thuật toán Euclid. Nó hoạt động như sau:
+
+Bắt đầu với hai số nguyên dương, a và b.
+Nếu b bằng 0, GCD của a và b là a.
+Nếu b khác 0, gọi đệ quy với tham số (b, a % b) cho đến khi b bằng 0.
+Cả hai phiên bản đều đưa ra kết quả chính xác là ước chung lớn nhất của hai số a và b. Sử dụng phiên bản nào phụ thuộc vào sự thoải mái của bạn với lặp hoặc đệ quy.
+
+
+
+
+User
+code ddaaau 
+ChatGPT
+Dưới đây là một ví dụ về cách viết code trong Python để tính ước chung lớn nhất (GCD) sử dụng thuật toán Euclid (phiên bản truyền thống):
+
+python
+Copy code
+def euclidean_gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+# Sử dụng hàm để tính GCD của hai số
+num1 = 48
+num2 = 18
+gcd = euclidean_gcd(num1, num2)
+
+print("Ước chung lớn nhất của", num1, "và", num2, "là:", gcd)
+K
+
+
+
+
+User
+bằng  c++
+ChatGPT
+Dưới đây là một ví dụ về cách viết code trong C++ để tính ước chung lớn nhất (GCD) sử dụng thuật toán Euclid (phiên bản truyền thống):
+
+cpp
+Copy code
+#include <iostream>
+
+int euclidean_gcd(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+int main() {
+    int num1 = 48;
+    int num2 = 18;
+    int gcd = euclidean_gcd(num1, num2);
+
+    std::cout << "Ước chung lớn nhất của " << num1 << " và " << num2 << " là: " << gcd << std::endl;
+
+    return 0;
+}
+Khi bạn biên dịch và chạy mã này trong môi trường C++, nó sẽ tính và hiển thị ước chung lớn nhất của hai số num1 và num2.

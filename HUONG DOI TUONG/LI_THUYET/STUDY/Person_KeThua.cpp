@@ -5,7 +5,7 @@ using namespace std;
 
 // Lớp cơ sở (base class)
 class Person {
-protected:
+private:
     string name;
     int age;
 
@@ -14,11 +14,14 @@ public:
         this->name = name;
         this->age = age;
     }
-    string getName() const {
+    string getName() {
         return name;
     }
+    int getTuoi() {
+        return age;
+    }
     void display() {
-        cout<<"\nStudent :"<<endl;
+        cout << "\nPerson:" << endl;
         cout << "Name: " << name << ", Age: " << age << endl;
     }
 };
@@ -32,7 +35,7 @@ public:
     Student(const string& name, int age, const string& Nganh) : Person(name, age), Nganh(Nganh) {}
 
     void displayStudent() {
-        cout << "Name: " << name << ", Age: " << age << ", Nganh: " << Nganh << endl;
+        cout << "Name: " << getName() << ", Age: " << getTuoi() << ", Nganh: " << Nganh << endl;
     }
 };
 
@@ -46,7 +49,6 @@ int main() {
     // Gọi phương thức display của lớp cơ sở
     cout << "Person: ";
     person.display();
-    student.display();
 
     // Gọi phương thức display của lớp dẫn xuất
     cout << "Student: ";

@@ -1,0 +1,22 @@
+- Hàm bạn và lớp bạn :
++ Khi nhắc đến hàm bạn thì chúng ta sẽ nhắc đến phạm vi truy 
+cập private.
++ Con cáo min có phương thức lấy kẹo và con cáo min này rất
+là thích con mèo mun và nó  muốn cho con mèo mun này cũng 
+có thể lấy được kẹo . Có hai trường hợp xảy ra :
+     + Phương thức lấy kẹo để ở public thì con mèo mum có
+thể lấy được kẹo nhưng nhưng việc này vô tình làm cho việc
+lấy kẹo sẽ trở thành một phương thức công cộng  và ai cũng có
+thể lấy được kẹo .
+     + Trường hợp thứ hai là để private thì chỉ có mõi con 
+cáo min có khả năng lấy kẹo , không có khả năng chi trả.
+-> Để cho phép con mun lấy mà không cho phép bất cứ ai lấy 
+nữa thì chúng ta phải thiết lập con mun là lớp bạn của con cáo
+min .
+    ---KHAI BÁO HÀM BẠN---
+   friend void Fox(Cat cat);
+
+    ---KHAI BÁO LỚP BẠN---    
+   friend class Fox;
+
+- 

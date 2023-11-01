@@ -1,0 +1,26 @@
+- Tính đa hình  là hiện tượng các đối tượng thuộc các lớp khác
+nhau có thể hiểu cùng một thông điệp theo các cách khác nhau.
+- Một ví dụ về đa hình trong thực tế là có 3 con vật là:
++ Chó 
++ Mèo
++ Lợn 
+- Cả 3 con vật này đều là động vật . Nhưng khi bảo cả ba động vật kêu thì 
+    + Con chó sẽ kêu gâu gâu 
+    + Con mèo kêu meo meo
+    + Con lợn kêu ịt ịt 
+- Ta coi 3 con chó , mèo , lợn xem là các đối tượng .Việc ta bảo đồn vật kêu chính 
+là một thông điệp . Rõ ràng là cả ba động vật có thể hiểu cùng một thông điệp và kêu 
+theo những cách khác nhau.
+
+
+- Để thể hiện  được tính đa hình thì:
++ Các lớp phải có quan hệ kế thừa với cùng một lớp cha nào đó.
++ Phương thức đa hình phải được ghi đè (overriride) ở các lớp con 
+
+- Từ khóa victual là từ khóa dùng để khai báo một phương thức ảo  ( Phương thức ảo là phương thức có thể ghi đè được)
+- Trong ngôn ngữ lập trình C++, bạn có thể ghi đè một phương thức của lớp cơ sở trong lớp dẫn xuất (subclasses) để thay 
+đổi hoặc mở rộng cách phương thức hoạt động. 
+
+- " override "  là từ khóa dùng để đánh dấu phương thức ghi đè lên phương thức của lớp cha .
+---> Tính đa hình chỉ được thể hiện khi đã ghi đè lên phương thức của lớp cha.
+- 
