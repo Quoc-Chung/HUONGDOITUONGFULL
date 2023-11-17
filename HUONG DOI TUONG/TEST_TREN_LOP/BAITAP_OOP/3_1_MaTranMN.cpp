@@ -8,7 +8,7 @@ class MT{
        // Hàm khởi tạo 
         MT() {
         m = n = 0;
-        tp=nullptr;
+        tp=NULL;
     }
     // Hàm khởi tạo có đối số truyền vào
       MT(int m, int n) {

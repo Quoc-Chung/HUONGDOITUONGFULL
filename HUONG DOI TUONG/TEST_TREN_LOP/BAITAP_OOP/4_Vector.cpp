@@ -12,7 +12,7 @@ class Vector{
   public :
     Vector(){
        n=0;
-       tp=nullptr;
+       tp=NULL;
     }
     Vector(int n){
         this->n =n;

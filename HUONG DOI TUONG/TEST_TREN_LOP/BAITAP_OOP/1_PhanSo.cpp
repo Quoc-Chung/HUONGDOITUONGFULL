@@ -13,6 +13,15 @@
 // - Tính biểu thức (p1+p2)/(p3-p4)*p1
 #include<bits/stdc++.h>
 using namespace std;
+// Hàm tìm ước chung lớn nhất bằng thuật toán Euclid
+    int UCLN(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+}
 class PhanSo{
   private :
     int x ,y ;
@@ -25,7 +34,7 @@ class PhanSo{
         this->y = Mau_So;
      }
      PhanSo RutGon(){
-        int glc = __gcd(x, y);
+        int glc = UCLN(x, y);
         x /= glc;
         y /= glc;
         return *this; // Trả về đối tượng gốc sau khi rút gọn
@@ -41,11 +50,11 @@ class PhanSo{
       cout<<"\n"<<x <<" / "<<y <<endl;
      }
      PhanSo Cong(PhanSo p2){
-      PhanSo T,p1;
-      p1 =*this;
-      T.x =p1.x *p2.y + p2.x *p1.y;
-      T.y =p1.y *p2.y;
-      return T;
+        PhanSo T,p1;
+        p1 =*this;
+        T.x =p1.x *p2.y + p2.x *p1.y;
+        T.y =p1.y *p2.y;
+        return T;
      }
      PhanSo Tru(PhanSo p2){
       PhanSo T,p1;

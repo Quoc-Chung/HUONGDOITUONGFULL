@@ -32,6 +32,7 @@ class DaThuc{
         ~DaThuc() {
             delete[] hs; 
         }
+        
     void NhapDaThuc(){
         cout<<"\nNhap so bac :";
         cin >> Bac;
@@ -70,6 +71,7 @@ class DaThuc{
         }
         return Tong;
     }
+
     DaThuc operator-(DaThuc &b){
         DaThuc Hieu;
         Hieu.Bac=max(Bac,b.Bac);
@@ -81,6 +83,31 @@ class DaThuc{
         }
         return Hieu;
     }
+
+     DaThuc operator*(DaThuc &b){
+        DaThuc Tich;
+        Tich.Bac=max(Bac,b.Bac);
+        Tich.hs = new float [Tich.Bac];
+        for (int i=0;i<=Tich.Bac;i++){
+            float num1 = (i <= Bac) ? hs[i] : 0;
+            float num2 = (i <= b.Bac) ? b.hs[i] : 0;
+            Tich.hs[i] = num1 * num2;
+        }
+        return Tich;
+    }
+
+     DaThuc operator/(DaThuc &b){
+        DaThuc Chia;
+        Chia.Bac=max(Bac,b.Bac);
+        Chia.hs = new float [Chia.Bac];
+        for (int i=0;i<=Chia.Bac;i++){
+            float num1 = (i <= Bac) ? hs[i] : 0;
+            float num2 = (i <= b.Bac) ? b.hs[i] : 0;
+            Chia.hs[i] = num1 * num2;
+        }
+        return Chia;
+    }
+
     float TinhGiaTri(float x0){
         float Value =0;
         for (int i=0;i<Bac;i++){
@@ -89,6 +116,8 @@ class DaThuc{
         return Value;
     }
 };
+
+
 int main(){
    DaThuc P,Q;
    cout<<"\nNhap da thuc P :";
