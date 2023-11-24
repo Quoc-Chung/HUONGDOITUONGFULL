@@ -46,6 +46,7 @@ class DaThuc{
           cin >>hs[i];
         }
     }
+
     void XuatDaThuc(){
         if(Bac==1){
             cout <<hs[0]<<" + ";
@@ -60,6 +61,7 @@ class DaThuc{
             cout <<hs[Bac]<<" * x^" <<Bac;
         }
     } 
+
     DaThuc operator+(DaThuc &b){
         DaThuc Tong;
         Tong.Bac=max(Bac,b.Bac);

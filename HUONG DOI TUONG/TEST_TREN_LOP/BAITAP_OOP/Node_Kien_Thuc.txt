@@ -7,6 +7,12 @@
         return *this; // Trả về đối tượng gốc sau khi rút gọn
      }
     
+ PhanSo RutGon(){
+        int glc = UCLN(x, y);
+        x /= glc;
+        y /= glc;
+        return *this; // Trả về đối tượng gốc sau khi rút gọn
+     }
 --------------------------------------------------------------
 
 - Bài 2 : ĐA THỨC

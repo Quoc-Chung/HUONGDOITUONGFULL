@@ -39,12 +39,26 @@ class PhanSo{
         y /= glc;
         return *this; // Trả về đối tượng gốc sau khi rút gọn
      }
+
      void Nhap(){
       cout<<"\nNhap hoanh do :";
       cin >> x;
       cout<<"\nNhap tung do :";
       cin >> y;
      }
+     friend istream& operator>>(istream & is, PhanSo &ps){
+       cout<<"\nNhap hoanh do :";
+       is >> ps.x;
+       cout<<"\nNhap tung do :";
+       is>>ps.y;
+       return is;
+     }
+
+     friend ostream& operator>>(ostream & os, PhanSo &ps){
+        os<<"\n"<<ps.x <<" / "<<ps.y <<endl;
+        return os;
+     }
+
      void In (){
       RutGon();
       cout<<"\n"<<x <<" / "<<y <<endl;
@@ -56,6 +70,14 @@ class PhanSo{
         T.y =p1.y *p2.y;
         return T;
      }
+      PhanSo Cong(PhanSo p1,PhanSo p2){
+        PhanSo T;
+        T.x =p1.x *p2.y + p2.x *p1.y;
+        T.y =p1.y *p2.y;
+        return T;
+     }
+
+
      PhanSo Tru(PhanSo p2){
       PhanSo T,p1;
       p1 =*this;
@@ -63,12 +85,14 @@ class PhanSo{
       T.y =p1.y *p2.y;
       return T;
      }
+
     friend PhanSo operator*(PhanSo &p1 ,PhanSo &p2){
       PhanSo Tich;
       Tich.x = p1.x * p2.x;
       Tich.y = p1.y * p2.y;
       return Tich;
      }
+     
      friend PhanSo operator/(PhanSo &p1 ,PhanSo &p2){
       PhanSo Chia;
       // Phép chia thì bằng phép nhân nghịch đảo 
