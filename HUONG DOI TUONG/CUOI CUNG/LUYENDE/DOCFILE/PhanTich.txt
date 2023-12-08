@@ -1,0 +1,97 @@
+#include<bits/stdc++.h>
+using namespace std;
+class QLH {
+private:
+    - Các Thuộc Tính - 
+public:
+============================================================
+    void Nhap(ifstream &file) {
+        file >> MaHang;
+        file.ignore(); // Loại bỏ ký tự xuống dòng
+        getline(file, TenHang);
+        getline(file, XuatXu);
+        file >> LoaiHang >> SoLuong;
+    }
+============================================================
+    void In() {
+    }
+    int getLoaiHang() {
+        return LoaiHang;
+    }
+    int getSoLuong() {
+        return SoLuong;
+    }
+    string getTenHang() {
+        return TenHang;
+    }
+};
+class DIENTU : public QLH {
+private:
+    int TGBH; 
+public:
+    int getTGBH() {
+        return TGBH;
+    }
+========================================================================
+    void Nhap(ifstream &file) {
+        QLH::Nhap(file);
+        file >> TGBH;
+    }
+========================================================================
+    void In() {
+        QLH::In();
+        cout << "\nThoi Gian Bao Hanh: " << TGBH;
+    }
+    void ThongKe(DIENTU *dt, int n) {
+    }
+    void ThoiGianBaoHanhMax(DIENTU *dt, int n) {
+    }
+};
+int main() {
+    int n;
+
+========================================================================
+    ifstream file("Ma_hang.txt");
+    if (!file){
+        cout << "Khong the mo tep danh_sach_hang.txt" << endl;
+        return 1;
+    }
+
+    file >> n;
+    DIENTU *dt = new DIENTU[n];   
+    for (int i = 0; i < n; i++) {
+        dt[i].Nhap(file);
+    }
+    for (int i = 0; i < n; i++) {
+        dt[i].In();
+    } 
+    dt[0].ThongKe(dt, n); // Gọi hàm với đối số đúng
+
+    dt[0].ThoiGianBaoHanhMax(dt, n);
+    file.close();
+
+===================================================================================
+       ĐỂ CHÚNG TA CÓ THỂ GHI DỮ LIỆU RA MỘT FILE MỚI THÌ  LÀM NHƯ NÀY
+    ofstream outFile("KetQua.txt");
+    if (!outFile) {
+        cout << "Khong the tao hoac mo tep KetQua.txt" << endl;
+        return 1;
+    }
+    for (int i = 0; i < n; i++) {
+        // Ghi dữ liệu vào tệp KetQua.txt
+        outFile << "Ma Hang: " << dt[i].getMaHang() << endl;
+        outFile << "Ten Hang: " << dt[i].getTenHang() << endl;
+        outFile << "Xuat Xu: " << dt[i].getXuatXu() << endl;
+        outFile << "Loai Hang: " << dt[i].getLoaiHang() << endl;
+        outFile << "So Luong: " << dt[i].getSoLuong() << endl;
+        outFile << "Thoi Gian Bao Hanh: " << dt[i].getTGBH() << " thang" << endl;
+    }
+    // Đóng tệp ghi ra
+    outFile.close();
+=================================================================================
+
+    return 0;
+}
+
+- Điều chúng ta cần thay đổi duy nhất đó là thay đổi hàm nhập truyền FILE vào để đọc nó ra
+- Quá là dễ :)))

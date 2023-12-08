@@ -1,0 +1,13 @@
+- const là một từ khóa trong ngôn ngữ lập trình c++.
+-> Nó được sử dụng để khai báo một biến là hằng số ( constant ).
+- Một biến được khai báo là hằng số thì tức là nó sẽ không thể thay đổi giá 
+trị của nó sau khi nó được khởi tạo .
+- Nó được đặt trước kiểu dữ liệu của biến để chỉ định rằng giá trị của biến 
+này không thể thay đổi. 
+
+
+- const int x = 5 
+
+- Tham số hàm const:void myFunction(const int x) { 
+    
+    // Giá trị của x không thể thay đổi trong hàm này }

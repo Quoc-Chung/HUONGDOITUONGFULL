@@ -1,0 +1,84 @@
+                         DOC FILE 
+
+ifstream file("DSMH.txt");
+
+- Neu kiem tra xem file vua doc co la NULL khong thi file moi mo thanh cong :
+if (!file) {
+    cout << "Loi game roi khong mo duoc tep dau :((" << endl;
+    return 1;
+}
+
+--> Tu do ta co the dung file de truy xuat cac phan tu : 
+
+           file >> n;
+          
+           for(int i = 0; i < n; i++){
+                   MH[i].Nhap(file);
+              }
+      
+            void Nhap(ifstream &file) {
+                file >> MaHang;
+                file.ignore(); // Loại bỏ ký tự xuống dòng
+                getline(file, TenHang);
+                getline(file, XuatXu);
+                file >> LoaiHang >> SoLuong;
+            } 
+
+- Kieu nhu bay gio thi no se thay tu file  ==  cin.
+
+- Cuoi cung sau khi doc xong thi chung ta dong file :
+file.close();
+=====================================================================================
+=> RUT RA NGUYEN TAC : KhI MUON DOC TU FILE RA THI CHI CAN CAC BUOC SAU :
+   + KHAI BAO CAI FILE MINH LAY KIEN THUC RA :             
+              ifstream file("DSMH.txt");
+   + TIEP THEO LA CHUNG TA SE TRUYEN VAO LAM THAM SO: 
+              ifstream &file
+   + TIEP THEO THI TA CHI CAN SU DUNG BINH THUONG BANG CACH SU DUNG  HAM BINH 
+THUONG ROI TRUYEN VAO FILE.
+              thay the cin == file 
+
+=====================================================================================
+                       XUAT FILE 
+
+- Thi chung ta can phai khai bao file de no co the : 
+  
+ofstream outFile("ketqua.txt");
+if (!outFile) {
+    cout << "Khong the mo tep ketqua.txt" << endl;
+    return 1;
+}
+
+- Thay doi ham in : 
+void In(ofstream &outFile) {
+    outFile << "\nMa Hang: " << MaHang;
+    outFile << "\nTen Hang: " << TenHang;
+    outFile << "\nXuat Xu: " << XuatXu;
+    outFile << "\nLoai Hang: " << LoaiHang;
+    outFile << "\nSo Luong: " << SoLuong;
+}
+
+void ThongKe(ofstream &outFile, DIENTU *dt, int n) {
+    // Tương tự như hàm In, thay cout bằng outFile
+    outFile << "\nLoai hang 1 co " << dem1 << " mat hang va So Luong la " << tong1 << endl;
+    outFile << "\nLoai hang 2 co " << dem2 << " mat hang va So Luong la " << tong2 << endl;
+    outFile << "\nLoai hang 3 co " << dem3 << " mat hang va So Luong la " << tong3 << endl;
+}
+
+void ThoiGianBaoHanhMax(ofstream &outFile, DIENTU *dt, int n) {
+    // Tương tự như hàm In, thay cout bằng outFile
+    outFile << "\nTen hang co thoi gian bao hanh max la: " << MatHangThoa << endl;
+}
+
+===================================================================================
+- RUT RA NGUYEN TAC DE CO THE XUAT KE QUA VAO FILE . 
+
++ KHAI BAO CAI FILE MA MINH MUON XUAT KET QUA RA  : 
+          ofstream outFile("ketqua.txt");
+
++ TIEP THEO THI CHUNG TA TRUYEN DOI SO GHI FILE VAO HAM :
+          ofstream &outFile
+
++ CUOI CUNG CHUNG TA CHI CAN THAY THE COUT BANG DOI TUONG UNG LA DUNG 
+          cout == outFile
+==================================================================================

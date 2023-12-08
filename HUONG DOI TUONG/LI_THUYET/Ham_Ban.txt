@@ -19,4 +19,3 @@ min .
     ---KHAI BÁO LỚP BẠN---    
    friend class Fox;
 
-- 
